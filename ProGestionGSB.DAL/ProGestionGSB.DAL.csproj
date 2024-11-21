@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>a3de21ed-5d9a-472c-8fc6-4360df50ea9b</ProjectGuid>
+    <ProjectGuid>{A3DE21ED-5D9A-472C-8FC6-4360DF50EA9B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProGestionGSB.DAL</RootNamespace>
@@ -31,24 +31,181 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Action.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Association.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AssociationDAO.cs" />
+    <Compile Include="AssociationExt.cs" />
+    <Compile Include="ChoosenCountryYear.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CountryDAO.cs" />
+    <Compile Include="GSBMecenatModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSBMecenatModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GSBMecenatModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GSBMecenatModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="InterventionsLog.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mission.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MissionDAO.cs" />
+    <Compile Include="Partnership.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_actions_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_actions_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_associations_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_associations_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_choosenCountryYears_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_choosenCountryYears_getByYear_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_country_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_country_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_country_getByIsoCode_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_interventionLogs_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_interventionLogs_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_interventionLogs_getByOperation_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_interventionLogs_getByReference_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_interventionLogs_getByTableName_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_missions_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_missions_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_nbAssociationByCountry_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_nbPartnershipsByActionByYear_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_partnerships_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_partnerships_getByActionId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_partnerships_getByAssociationId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_partnerships_getByCountryId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_partnerships_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_role_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_role_getById_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_users_getAll_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_users_getbyId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="GSBMecenatModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GSBMecenatModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="GSBMecenatModel.edmx.diagram">
+      <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GSBMecenatModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GSBMecenatModel.Context.cs</LastGenOutput>
+      <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="GSBMecenatModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
+      <LastGenOutput>GSBMecenatModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>

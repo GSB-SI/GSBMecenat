@@ -33,7 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,14 +53,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FrmAddAssociation.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FrmAddAssociation.Designer.cs">
+      <DependentUpon>FrmAddAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAssociations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAssociations.Designer.cs">
+      <DependentUpon>FrmAssociations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeleteAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteAssociation.Designer.cs">
+      <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateAssociation.Designer.cs">
+      <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAddAssociation.resx">
+      <DependentUpon>FrmAddAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAssociations.resx">
+      <DependentUpon>FrmAssociations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteAssociation.resx">
+      <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateAssociation.resx">
+      <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -63,6 +109,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -75,6 +122,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProGestionGSB.BLL\ProGestionGSB.BLL.csproj">
+      <Project>{d6bc13d4-95e4-444d-b8cc-82aa5669c306}</Project>
+      <Name>ProGestionGSB.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProGestionGSB.DAL\ProGestionGSB.DAL.csproj">
+      <Project>{a3de21ed-5d9a-472c-8fc6-4360df50ea9b}</Project>
+      <Name>ProGestionGSB.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

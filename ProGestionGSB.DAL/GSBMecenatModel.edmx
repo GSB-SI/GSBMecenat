@@ -1,0 +1,1354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProGestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Actions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libel" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Associations">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="responsable" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="mission_id" Type="int" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ChoosenCountryYears">
+          <Key>
+            <PropertyRef Name="country_id" />
+            <PropertyRef Name="choosenYear" />
+          </Key>
+          <Property Name="country_id" Type="int" Nullable="false" />
+          <Property Name="choosenYear" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="isoCode" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InterventionsLogs">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tableName" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="operation" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="reference" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Missions">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libel" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Partnerships">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="plafond" Type="float" />
+          <Property Name="forecastBudget" Type="float" />
+          <Property Name="realBudget" Type="float" />
+          <Property Name="action_id" Type="int" Nullable="false" />
+          <Property Name="association_id" Type="int" Nullable="false" />
+          <Property Name="country_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="libel" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="120" Nullable="false" />
+          <Property Name="role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Associati__count__412EB0B6">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Associations" Type="Self.Associations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Associations">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Associati__missi__403A8C7D">
+          <End Role="Missions" Type="Self.Missions" Multiplicity="1" />
+          <End Role="Associations" Type="Self.Associations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Associations">
+              <PropertyRef Name="mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChoosenCo__count__3B75D760">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ChoosenCountryYears" Type="Self.ChoosenCountryYears" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChoosenCountryYears">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partnersh__actio__440B1D61">
+          <End Role="Actions" Type="Self.Actions" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partnersh__assoc__44FF419A">
+          <End Role="Associations" Type="Self.Associations" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="association_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partnersh__count__45F365D3">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnerships" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__role_id__29221CFB">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_actions_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_actions_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_actions_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_actions_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_actions_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_associations_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="responsable" Type="varchar" Mode="In" />
+          <Parameter Name="mission_id" Type="int" Mode="In" />
+          <Parameter Name="country_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_associations_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_associations_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_associations_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_associations_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="responsable" Type="varchar" Mode="In" />
+          <Parameter Name="mission_id" Type="int" Mode="In" />
+          <Parameter Name="country_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_choosenCountryYears_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="country_id" Type="int" Mode="In" />
+          <Parameter Name="choosenYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_choosenCountryYears_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="country_id" Type="int" Mode="In" />
+          <Parameter Name="choosenYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_choosenCountryYears_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_choosenCountryYears_getByYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="choosenYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_choosenCountryYears_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="country_id" Type="int" Mode="In" />
+          <Parameter Name="oldChoosenYear" Type="int" Mode="In" />
+          <Parameter Name="newChoosenYear" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_country_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="isoCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_country_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_country_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_country_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_country_getByIsoCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="isoCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_country_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="name" Type="varchar" Mode="In" />
+          <Parameter Name="isoCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_interventionLogs_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="varchar" Mode="In" />
+          <Parameter Name="operation" Type="varchar" Mode="In" />
+          <Parameter Name="reference" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_interventionLogs_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_interventionLogs_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_interventionLogs_getByOperation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="operation" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_interventionLogs_getByReference" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="reference" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_interventionLogs_getByTableName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tableName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_missions_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_missions_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_missions_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_missions_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_missions_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_nbAssociationByCountry" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_nbPartnershipsByActionByYear" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_partnerships_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="action_id" Type="int" Mode="In" />
+          <Parameter Name="association_id" Type="int" Mode="In" />
+          <Parameter Name="country_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_partnerships_getByActionId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="action_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_getByAssociationId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="association_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_getByCountryId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="country_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="action_id" Type="int" Mode="In" />
+          <Parameter Name="association_id" Type="int" Mode="In" />
+          <Parameter Name="country_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_updateForecastBudget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="forecastBudget" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_updatePlafond" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="plafond" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_partnerships_updateRealBudget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="realBudget" Type="float" Mode="In" />
+        </Function>
+        <Function Name="sp_role_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_role_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_role_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_role_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_role_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_users_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="role_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_users_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_users_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_users_getbyId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_users_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="int" Mode="In" />
+          <Parameter Name="login" Type="varchar" Mode="In" />
+          <Parameter Name="password" Type="varchar" Mode="In" />
+          <Parameter Name="role_id" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ProGestionModelStoreContainer">
+          <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Associations" EntityType="Self.Associations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ChoosenCountryYears" EntityType="Self.ChoosenCountryYears" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InterventionsLogs" EntityType="Self.InterventionsLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Missions" EntityType="Self.Missions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Partnerships" EntityType="Self.Partnerships" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Associati__count__412EB0B6" Association="Self.FK__Associati__count__412EB0B6">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Associations" EntitySet="Associations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Associati__missi__403A8C7D" Association="Self.FK__Associati__missi__403A8C7D">
+            <End Role="Missions" EntitySet="Missions" />
+            <End Role="Associations" EntitySet="Associations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChoosenCo__count__3B75D760" Association="Self.FK__ChoosenCo__count__3B75D760">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ChoosenCountryYears" EntitySet="ChoosenCountryYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partnersh__actio__440B1D61" Association="Self.FK__Partnersh__actio__440B1D61">
+            <End Role="Actions" EntitySet="Actions" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partnersh__assoc__44FF419A" Association="Self.FK__Partnersh__assoc__44FF419A">
+            <End Role="Associations" EntitySet="Associations" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partnersh__count__45F365D3" Association="Self.FK__Partnersh__count__45F365D3">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__role_id__29221CFB" Association="Self.FK__Users__role_id__29221CFB">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProGestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Partnerships" Relationship="Self.FK__Partnersh__actio__440B1D61" FromRole="Actions" ToRole="Partnerships" />
+        </EntityType>
+        <EntityType Name="Association">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="responsable" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mission_id" Type="Int32" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Associati__count__412EB0B6" FromRole="Associations" ToRole="Country" />
+          <NavigationProperty Name="Mission" Relationship="Self.FK__Associati__missi__403A8C7D" FromRole="Associations" ToRole="Missions" />
+          <NavigationProperty Name="Partnerships" Relationship="Self.FK__Partnersh__assoc__44FF419A" FromRole="Associations" ToRole="Partnerships" />
+        </EntityType>
+        <EntityType Name="ChoosenCountryYear">
+          <Key>
+            <PropertyRef Name="country_id" />
+            <PropertyRef Name="choosenYear" />
+          </Key>
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <Property Name="choosenYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__ChoosenCo__count__3B75D760" FromRole="ChoosenCountryYears" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="isoCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Associations" Relationship="Self.FK__Associati__count__412EB0B6" FromRole="Country" ToRole="Associations" />
+          <NavigationProperty Name="ChoosenCountryYears" Relationship="Self.FK__ChoosenCo__count__3B75D760" FromRole="Country" ToRole="ChoosenCountryYears" />
+          <NavigationProperty Name="Partnerships" Relationship="Self.FK__Partnersh__count__45F365D3" FromRole="Country" ToRole="Partnerships" />
+        </EntityType>
+        <EntityType Name="InterventionsLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tableName" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="operation" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="reference" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mission">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Associations" Relationship="Self.FK__Associati__missi__403A8C7D" FromRole="Missions" ToRole="Associations" />
+        </EntityType>
+        <EntityType Name="Partnership">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="plafond" Type="Double" />
+          <Property Name="forecastBudget" Type="Double" />
+          <Property Name="realBudget" Type="Double" />
+          <Property Name="action_id" Type="Int32" Nullable="false" />
+          <Property Name="association_id" Type="Int32" Nullable="false" />
+          <Property Name="country_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Action" Relationship="Self.FK__Partnersh__actio__440B1D61" FromRole="Partnerships" ToRole="Actions" />
+          <NavigationProperty Name="Association" Relationship="Self.FK__Partnersh__assoc__44FF419A" FromRole="Partnerships" ToRole="Associations" />
+          <NavigationProperty Name="Country" Relationship="Self.FK__Partnersh__count__45F365D3" FromRole="Partnerships" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="libel" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__role_id__29221CFB" FromRole="Role" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="120" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Users__role_id__29221CFB" FromRole="Users" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK__Partnersh__actio__440B1D61">
+          <End Role="Actions" Type="Self.Action" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="action_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Associati__count__412EB0B6">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Associations" Type="Self.Association" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Associations">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Associati__missi__403A8C7D">
+          <End Role="Missions" Type="Self.Mission" Multiplicity="1" />
+          <End Role="Associations" Type="Self.Association" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Missions">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Associations">
+              <PropertyRef Name="mission_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partnersh__assoc__44FF419A">
+          <End Role="Associations" Type="Self.Association" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associations">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="association_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChoosenCo__count__3B75D760">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ChoosenCountryYears" Type="Self.ChoosenCountryYear" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="ChoosenCountryYears">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Partnersh__count__45F365D3">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Partnerships" Type="Self.Partnership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Partnerships">
+              <PropertyRef Name="country_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__role_id__29221CFB">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GSBMecenatEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actions" EntityType="Self.Action" />
+          <EntitySet Name="Associations" EntityType="Self.Association" />
+          <EntitySet Name="ChoosenCountryYears" EntityType="Self.ChoosenCountryYear" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="InterventionsLogs" EntityType="Self.InterventionsLog" />
+          <EntitySet Name="Missions" EntityType="Self.Mission" />
+          <EntitySet Name="Partnerships" EntityType="Self.Partnership" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK__Partnersh__actio__440B1D61" Association="Self.FK__Partnersh__actio__440B1D61">
+            <End Role="Actions" EntitySet="Actions" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Associati__count__412EB0B6" Association="Self.FK__Associati__count__412EB0B6">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Associations" EntitySet="Associations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Associati__missi__403A8C7D" Association="Self.FK__Associati__missi__403A8C7D">
+            <End Role="Missions" EntitySet="Missions" />
+            <End Role="Associations" EntitySet="Associations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partnersh__assoc__44FF419A" Association="Self.FK__Partnersh__assoc__44FF419A">
+            <End Role="Associations" EntitySet="Associations" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChoosenCo__count__3B75D760" Association="Self.FK__ChoosenCo__count__3B75D760">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="ChoosenCountryYears" EntitySet="ChoosenCountryYears" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Partnersh__count__45F365D3" Association="Self.FK__Partnersh__count__45F365D3">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Partnerships" EntitySet="Partnerships" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__role_id__29221CFB" Association="Self.FK__Users__role_id__29221CFB">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <FunctionImport Name="sp_actions_add">
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actions_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actions_getAll" ReturnType="Collection(ProGestionModel.sp_actions_getAll_Result)" />
+          <FunctionImport Name="sp_actions_getById" ReturnType="Collection(ProGestionModel.sp_actions_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_actions_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_associations_add">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="responsable" Mode="In" Type="String" />
+            <Parameter Name="mission_id" Mode="In" Type="Int32" />
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_associations_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_associations_getAll" ReturnType="Collection(ProGestionModel.sp_associations_getAll_Result)" />
+          <FunctionImport Name="sp_associations_getById" ReturnType="Collection(ProGestionModel.sp_associations_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_associations_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="responsable" Mode="In" Type="String" />
+            <Parameter Name="mission_id" Mode="In" Type="Int32" />
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_choosenCountryYears_add">
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+            <Parameter Name="choosenYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_choosenCountryYears_delete">
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+            <Parameter Name="choosenYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_choosenCountryYears_getAll" ReturnType="Collection(ProGestionModel.sp_choosenCountryYears_getAll_Result)" />
+          <FunctionImport Name="sp_choosenCountryYears_getByYear" ReturnType="Collection(ProGestionModel.sp_choosenCountryYears_getByYear_Result)">
+            <Parameter Name="choosenYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_choosenCountryYears_update">
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+            <Parameter Name="oldChoosenYear" Mode="In" Type="Int32" />
+            <Parameter Name="newChoosenYear" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_country_add">
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="isoCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_country_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_country_getAll" ReturnType="Collection(ProGestionModel.sp_country_getAll_Result)" />
+          <FunctionImport Name="sp_country_getById" ReturnType="Collection(ProGestionModel.sp_country_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_country_getByIsoCode" ReturnType="Collection(ProGestionModel.sp_country_getByIsoCode_Result)">
+            <Parameter Name="isoCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_country_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="name" Mode="In" Type="String" />
+            <Parameter Name="isoCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_interventionLogs_add">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+            <Parameter Name="operation" Mode="In" Type="String" />
+            <Parameter Name="reference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_interventionLogs_getAll" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getAll_Result)" />
+          <FunctionImport Name="sp_interventionLogs_getById" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_interventionLogs_getByOperation" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByOperation_Result)">
+            <Parameter Name="operation" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_interventionLogs_getByReference" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByReference_Result)">
+            <Parameter Name="reference" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_interventionLogs_getByTableName" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByTableName_Result)">
+            <Parameter Name="tableName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_missions_add">
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_missions_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_missions_getAll" ReturnType="Collection(ProGestionModel.sp_missions_getAll_Result)" />
+          <FunctionImport Name="sp_missions_getById" ReturnType="Collection(ProGestionModel.sp_missions_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_missions_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_nbAssociationByCountry" ReturnType="Collection(ProGestionModel.sp_nbAssociationByCountry_Result)" />
+          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(ProGestionModel.sp_nbPartnershipsByActionByYear_Result)" />
+          <FunctionImport Name="sp_partnerships_add">
+            <Parameter Name="action_id" Mode="In" Type="Int32" />
+            <Parameter Name="association_id" Mode="In" Type="Int32" />
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_getAll" ReturnType="Collection(ProGestionModel.sp_partnerships_getAll_Result)" />
+          <FunctionImport Name="sp_partnerships_getByActionId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByActionId_Result)">
+            <Parameter Name="action_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_getByAssociationId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByAssociationId_Result)">
+            <Parameter Name="association_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_getByCountryId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByCountryId_Result)">
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_getById" ReturnType="Collection(ProGestionModel.sp_partnerships_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="action_id" Mode="In" Type="Int32" />
+            <Parameter Name="association_id" Mode="In" Type="Int32" />
+            <Parameter Name="country_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_updateForecastBudget">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="forecastBudget" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_updatePlafond">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="plafond" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_partnerships_updateRealBudget">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="realBudget" Mode="In" Type="Double" />
+          </FunctionImport>
+          <FunctionImport Name="sp_role_add">
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_role_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_role_getAll" ReturnType="Collection(ProGestionModel.sp_role_getAll_Result)" />
+          <FunctionImport Name="sp_role_getById" ReturnType="Collection(ProGestionModel.sp_role_getById_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_role_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="libel" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_add">
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_delete">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_getAll" ReturnType="Collection(ProGestionModel.sp_users_getAll_Result)" />
+          <FunctionImport Name="sp_users_getbyId" ReturnType="Collection(ProGestionModel.sp_users_getbyId_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_update">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+            <Parameter Name="login" Mode="In" Type="String" />
+            <Parameter Name="password" Mode="In" Type="String" />
+            <Parameter Name="role_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_actions_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_actions_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_associations_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="responsable" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="mission_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_associations_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="responsable" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="mission_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_choosenCountryYears_getAll_Result">
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+          <Property Type="Int32" Name="choosenYear" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_choosenCountryYears_getByYear_Result">
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+          <Property Type="Int32" Name="choosenYear" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_country_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="isoCode" Nullable="false" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_country_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="isoCode" Nullable="false" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_country_getByIsoCode_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="isoCode" Nullable="false" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_interventionLogs_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="operation" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="reference" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_interventionLogs_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="operation" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="reference" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_interventionLogs_getByOperation_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="operation" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="reference" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_interventionLogs_getByReference_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="operation" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="reference" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_interventionLogs_getByTableName_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="tableName" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="operation" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="reference" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_missions_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_missions_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_nbAssociationByCountry_Result">
+          <Property Type="String" Name="name" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="Number" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear_Result">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_partnerships_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Double" Name="plafond" Nullable="true" />
+          <Property Type="Double" Name="forecastBudget" Nullable="true" />
+          <Property Type="Double" Name="realBudget" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="false" />
+          <Property Type="Int32" Name="association_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_partnerships_getByActionId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Double" Name="plafond" Nullable="true" />
+          <Property Type="Double" Name="forecastBudget" Nullable="true" />
+          <Property Type="Double" Name="realBudget" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="false" />
+          <Property Type="Int32" Name="association_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_partnerships_getByAssociationId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Double" Name="plafond" Nullable="true" />
+          <Property Type="Double" Name="forecastBudget" Nullable="true" />
+          <Property Type="Double" Name="realBudget" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="false" />
+          <Property Type="Int32" Name="association_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_partnerships_getByCountryId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Double" Name="plafond" Nullable="true" />
+          <Property Type="Double" Name="forecastBudget" Nullable="true" />
+          <Property Type="Double" Name="realBudget" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="false" />
+          <Property Type="Int32" Name="association_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_partnerships_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="DateTime" Name="date" Nullable="false" />
+          <Property Type="Double" Name="plafond" Nullable="true" />
+          <Property Type="Double" Name="forecastBudget" Nullable="true" />
+          <Property Type="Double" Name="realBudget" Nullable="true" />
+          <Property Type="Int32" Name="action_id" Nullable="false" />
+          <Property Type="Int32" Name="association_id" Nullable="false" />
+          <Property Type="Int32" Name="country_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_role_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_role_getById_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+        </ComplexType>
+        <ComplexType Name="sp_users_getAll_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_users_getbyId_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProGestionModelStoreContainer" CdmEntityContainer="GSBMecenatEntities">
+          <EntitySetMapping Name="Actions">
+            <EntityTypeMapping TypeName="ProGestionModel.Action">
+              <MappingFragment StoreEntitySet="Actions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Associations">
+            <EntityTypeMapping TypeName="ProGestionModel.Association">
+              <MappingFragment StoreEntitySet="Associations">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="mission_id" ColumnName="mission_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ChoosenCountryYears">
+            <EntityTypeMapping TypeName="ProGestionModel.ChoosenCountryYear">
+              <MappingFragment StoreEntitySet="ChoosenCountryYears">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="ProGestionModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isoCode" ColumnName="isoCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InterventionsLogs">
+            <EntityTypeMapping TypeName="ProGestionModel.InterventionsLog">
+              <MappingFragment StoreEntitySet="InterventionsLogs">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Missions">
+            <EntityTypeMapping TypeName="ProGestionModel.Mission">
+              <MappingFragment StoreEntitySet="Missions">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Partnerships">
+            <EntityTypeMapping TypeName="ProGestionModel.Partnership">
+              <MappingFragment StoreEntitySet="Partnerships">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="ProGestionModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="ProGestionModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_actions_add" FunctionName="ProGestionModel.Store.sp_actions_add" />
+          <FunctionImportMapping FunctionImportName="sp_actions_delete" FunctionName="ProGestionModel.Store.sp_actions_delete" />
+          <FunctionImportMapping FunctionImportName="sp_actions_getAll" FunctionName="ProGestionModel.Store.sp_actions_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_actions_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_actions_getById" FunctionName="ProGestionModel.Store.sp_actions_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_actions_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_actions_update" FunctionName="ProGestionModel.Store.sp_actions_update" />
+          <FunctionImportMapping FunctionImportName="sp_associations_add" FunctionName="ProGestionModel.Store.sp_associations_add" />
+          <FunctionImportMapping FunctionImportName="sp_associations_delete" FunctionName="ProGestionModel.Store.sp_associations_delete" />
+          <FunctionImportMapping FunctionImportName="sp_associations_getAll" FunctionName="ProGestionModel.Store.sp_associations_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_associations_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="mission_id" ColumnName="mission_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_associations_getById" FunctionName="ProGestionModel.Store.sp_associations_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_associations_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="responsable" ColumnName="responsable" />
+                <ScalarProperty Name="mission_id" ColumnName="mission_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_associations_update" FunctionName="ProGestionModel.Store.sp_associations_update" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_add" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_add" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_delete" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_delete" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getAll" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_choosenCountryYears_getAll_Result">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getByYear" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_getByYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_choosenCountryYears_getByYear_Result">
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_update" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_update" />
+          <FunctionImportMapping FunctionImportName="sp_country_add" FunctionName="ProGestionModel.Store.sp_country_add" />
+          <FunctionImportMapping FunctionImportName="sp_country_delete" FunctionName="ProGestionModel.Store.sp_country_delete" />
+          <FunctionImportMapping FunctionImportName="sp_country_getAll" FunctionName="ProGestionModel.Store.sp_country_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isoCode" ColumnName="isoCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_country_getById" FunctionName="ProGestionModel.Store.sp_country_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isoCode" ColumnName="isoCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_country_getByIsoCode" FunctionName="ProGestionModel.Store.sp_country_getByIsoCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getByIsoCode_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="isoCode" ColumnName="isoCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_country_update" FunctionName="ProGestionModel.Store.sp_country_update" />
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_add" FunctionName="ProGestionModel.Store.sp_interventionLogs_add" />
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getAll" FunctionName="ProGestionModel.Store.sp_interventionLogs_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getById" FunctionName="ProGestionModel.Store.sp_interventionLogs_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByOperation" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByOperation">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByOperation_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByReference" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByReference">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByReference_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByTableName" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByTableName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByTableName_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tableName" ColumnName="tableName" />
+                <ScalarProperty Name="operation" ColumnName="operation" />
+                <ScalarProperty Name="reference" ColumnName="reference" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_missions_add" FunctionName="ProGestionModel.Store.sp_missions_add" />
+          <FunctionImportMapping FunctionImportName="sp_missions_delete" FunctionName="ProGestionModel.Store.sp_missions_delete" />
+          <FunctionImportMapping FunctionImportName="sp_missions_getAll" FunctionName="ProGestionModel.Store.sp_missions_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_missions_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_missions_getById" FunctionName="ProGestionModel.Store.sp_missions_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_missions_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_missions_update" FunctionName="ProGestionModel.Store.sp_missions_update" />
+          <FunctionImportMapping FunctionImportName="sp_nbAssociationByCountry" FunctionName="ProGestionModel.Store.sp_nbAssociationByCountry">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbAssociationByCountry_Result">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="ProGestionModel.Store.sp_nbPartnershipsByActionByYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbPartnershipsByActionByYear_Result">
+                <ScalarProperty Name="libel" ColumnName="libel" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_add" FunctionName="ProGestionModel.Store.sp_partnerships_add" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_delete" FunctionName="ProGestionModel.Store.sp_partnerships_delete" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getAll" FunctionName="ProGestionModel.Store.sp_partnerships_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByActionId" FunctionName="ProGestionModel.Store.sp_partnerships_getByActionId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByActionId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByAssociationId" FunctionName="ProGestionModel.Store.sp_partnerships_getByAssociationId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByAssociationId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByCountryId" FunctionName="ProGestionModel.Store.sp_partnerships_getByCountryId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByCountryId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getById" FunctionName="ProGestionModel.Store.sp_partnerships_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
+                <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
+                <ScalarProperty Name="realBudget" ColumnName="realBudget" />
+                <ScalarProperty Name="action_id" ColumnName="action_id" />
+                <ScalarProperty Name="association_id" ColumnName="association_id" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_update" FunctionName="ProGestionModel.Store.sp_partnerships_update" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updateForecastBudget" FunctionName="ProGestionModel.Store.sp_partnerships_updateForecastBudget" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updatePlafond" FunctionName="ProGestionModel.Store.sp_partnerships_updatePlafond" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updateRealBudget" FunctionName="ProGestionModel.Store.sp_partnerships_updateRealBudget" />
+          <FunctionImportMapping FunctionImportName="sp_role_add" FunctionName="ProGestionModel.Store.sp_role_add" />
+          <FunctionImportMapping FunctionImportName="sp_role_delete" FunctionName="ProGestionModel.Store.sp_role_delete" />
+          <FunctionImportMapping FunctionImportName="sp_role_getAll" FunctionName="ProGestionModel.Store.sp_role_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_role_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_role_getById" FunctionName="ProGestionModel.Store.sp_role_getById">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_role_getById_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="libel" ColumnName="libel" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_role_update" FunctionName="ProGestionModel.Store.sp_role_update" />
+          <FunctionImportMapping FunctionImportName="sp_users_add" FunctionName="ProGestionModel.Store.sp_users_add" />
+          <FunctionImportMapping FunctionImportName="sp_users_delete" FunctionName="ProGestionModel.Store.sp_users_delete" />
+          <FunctionImportMapping FunctionImportName="sp_users_getAll" FunctionName="ProGestionModel.Store.sp_users_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_users_getAll_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_users_getbyId" FunctionName="ProGestionModel.Store.sp_users_getbyId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_users_getbyId_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_users_update" FunctionName="ProGestionModel.Store.sp_users_update" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

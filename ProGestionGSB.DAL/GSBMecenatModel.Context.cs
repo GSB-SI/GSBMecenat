@@ -615,5 +615,23 @@ namespace ProGestionGSB.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_update", idParameter, loginParameter, passwordParameter, role_idParameter);
         }
+    
+        public virtual ObjectResult<sp_users_getById1_Result> sp_users_getById1(Nullable<int> id)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getById1_Result>("sp_users_getById1", idParameter);
+        }
+    
+        public virtual ObjectResult<sp_users_getByLogin_Result> sp_users_getByLogin(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin_Result>("sp_users_getByLogin", loginParameter);
+        }
     }
 }

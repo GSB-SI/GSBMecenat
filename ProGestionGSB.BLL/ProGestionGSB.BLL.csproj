@@ -41,9 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionManager.cs" />
     <Compile Include="AssociationManager.cs" />
     <Compile Include="CountryManager.cs" />
     <Compile Include="MissionManager.cs" />
+    <Compile Include="PartnershipManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

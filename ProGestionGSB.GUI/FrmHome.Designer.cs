@@ -78,6 +78,7 @@
             this.btnManagePartnerships.TabIndex = 3;
             this.btnManagePartnerships.Text = "Gestion des partenariats";
             this.btnManagePartnerships.UseVisualStyleBackColor = true;
+            this.btnManagePartnerships.Click += new System.EventHandler(this.btnManagePartnerships_Click);
             // 
             // btnManagePlafonds
             // 

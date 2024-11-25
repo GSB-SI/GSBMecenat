@@ -192,6 +192,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "FrmDeleteAssociation";
             this.Text = "Supprimer une association";
+            this.Load += new System.EventHandler(this.FrmDeleteAssociation_Load);
             this.grpUpdate.ResumeLayout(false);
             this.grpUpdate.PerformLayout();
             this.ResumeLayout(false);

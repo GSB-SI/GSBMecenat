@@ -27,5 +27,11 @@ namespace ProGestionGSB.GUI
             FrmAssociations frm = new FrmAssociations();
             frm.ShowDialog();
         }
+
+        private void btnManagePartnerships_Click(object sender, EventArgs e)
+        {
+            FrmPartnership frm = new FrmPartnership();
+            frm.ShowDialog();
+        }
     }
 }

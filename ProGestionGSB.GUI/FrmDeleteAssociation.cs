@@ -68,10 +68,23 @@ namespace ProGestionGSB.GUI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            Association Asso = (Association)cboAssociation.SelectedItem;
-            AssociationManager.GetInstance().DeleteAssociations(Asso);
-            MessageBox.Show("Produit supprimé", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            fillAssociation();
+            if (cboAssociation.SelectedIndex==-1)
+            {
+                MessageBox.Show("Veuillez sélectionner une association pour supprimer", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                Association Asso = (Association)cboAssociation.SelectedItem;
+                AssociationManager.GetInstance().DeleteAssociations(Asso);
+                MessageBox.Show("Association supprimée", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                fillAssociation();
+            }
+
+        }
+
+        private void FrmDeleteAssociation_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

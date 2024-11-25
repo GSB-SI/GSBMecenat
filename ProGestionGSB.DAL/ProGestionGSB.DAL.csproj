@@ -53,6 +53,7 @@
     <Compile Include="Action.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ActionDAO.cs" />
     <Compile Include="Association.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
@@ -90,6 +91,8 @@
     <Compile Include="Partnership.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PartnershipDAO.cs" />
+    <Compile Include="PartnershipExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
@@ -172,7 +175,13 @@
     <Compile Include="sp_users_getAll_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_users_getById1_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_users_getbyId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_users_getByLogin_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

@@ -1,4 +1,4 @@
-﻿using ProGestionGSB.DAL;
+using ProGestionGSB.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,6 +49,11 @@ namespace ProGestionGSB.BLL
         {
 
             return AssociationDAO.GetInstance().DeleteAssociations(a);
+        }
+
+        public List<string> ActionsByAssociation(Association a)
+        {
+            return AssociationDAO.GetInstance().GetActionsByAssociation(a);
         }
 
     }

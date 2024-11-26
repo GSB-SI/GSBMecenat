@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -37,10 +37,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -58,6 +58,106 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmAddAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddAssociation.Designer.cs">
+      <DependentUpon>FrmAddAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddPartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPartnership.Designer.cs">
+      <DependentUpon>FrmAddPartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAssociations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAssociations.Designer.cs">
+      <DependentUpon>FrmAssociations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeleteAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteAssociation.Designer.cs">
+      <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeletePartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeletePartnership.Designer.cs">
+      <DependentUpon>FrmDeletePartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIndicator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndicator.Designer.cs">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPartnership.Designer.cs">
+      <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.Designer.cs">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateAssociation.Designer.cs">
+      <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdatePartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdatePartnership.Designer.cs">
+      <DependentUpon>FrmUpdatePartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAddAssociation.resx">
+      <DependentUpon>FrmAddAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPartnership.resx">
+      <DependentUpon>FrmAddPartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAssociations.resx">
+      <DependentUpon>FrmAssociations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteAssociation.resx">
+      <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeletePartnership.resx">
+      <DependentUpon>FrmDeletePartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndicator.resx">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPartnership.resx">
+      <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowActionByAssociation.resx">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateAssociation.resx">
+      <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdatePartnership.resx">
+      <DependentUpon>FrmUpdatePartnership.cs</DependentUpon>
     <Compile Include="FrmAddUser.cs">
       <SubType>Form</SubType>
     </Compile>

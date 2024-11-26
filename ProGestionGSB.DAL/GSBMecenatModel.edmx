@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
@@ -180,6 +180,9 @@
         <Function Name="sp_actions_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="libel" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ActionsByAssociation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAssociation" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_associations_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
@@ -777,6 +780,10 @@
             <Parameter Name="password" Mode="In" Type="String" />
             <Parameter Name="role_id" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="sp_ActionsByAssociation" ReturnType="Collection(String)">
+          <Parameter Name="idAssociation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result1)" />
           <FunctionImport Name="sp_users_getById1" ReturnType="Collection(GSBMecenatModel.sp_users_getById1_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -957,6 +964,11 @@
           <Property Type="String" Name="login" Nullable="false" MaxLength="40" />
           <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
           <Property Type="Int32" Name="role_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear_Result1">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1355,6 +1367,16 @@
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ActionsByAssociation" FunctionName="GSBMecenatModel.Store.sp_ActionsByAssociation" />
+          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="GSBMecenatModel.Store.sp_nbPartnershipsByActionByYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result1">
+                <ScalarProperty Name="libel" ColumnName="libel" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="nbPartnerships" ColumnName="nbPartnerships" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

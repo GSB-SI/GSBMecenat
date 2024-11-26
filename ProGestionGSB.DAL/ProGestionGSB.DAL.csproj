@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="IndicatorDAO.cs" />
     <Compile Include="InterventionsLog.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
@@ -153,7 +154,7 @@
     <Compile Include="sp_nbAssociationByCountry_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_nbPartnershipsByActionByYear_Result.cs">
+    <Compile Include="sp_nbPartnershipsByActionByYear_Result1.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_partnerships_getAll_Result.cs">
@@ -192,6 +193,8 @@
     <Compile Include="User.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="UserDAO.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +203,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GSBMecenatModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
     <None Include="GSBMecenatModel.edmx.diagram">
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
     </None>
@@ -219,6 +225,11 @@
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
       <LastGenOutput>GSBMecenatModel.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

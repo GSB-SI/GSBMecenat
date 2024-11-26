@@ -378,11 +378,6 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_nbAssociationByCountry_Result>("sp_nbAssociationByCountry");
         }
     
-        public virtual ObjectResult<sp_nbPartnershipsByActionByYear_Result> sp_nbPartnershipsByActionByYear()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_nbPartnershipsByActionByYear_Result>("sp_nbPartnershipsByActionByYear");
-        }
-    
         public virtual int sp_partnerships_add(Nullable<int> action_id, Nullable<int> association_id, Nullable<int> country_id)
         {
             var action_idParameter = action_id.HasValue ?
@@ -632,6 +627,20 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("login", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin_Result>("sp_users_getByLogin", loginParameter);
+        }
+    
+        public virtual ObjectResult<string> sp_ActionsByAssociation(Nullable<int> idAssociation)
+        {
+            var idAssociationParameter = idAssociation.HasValue ?
+                new ObjectParameter("idAssociation", idAssociation) :
+                new ObjectParameter("idAssociation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_ActionsByAssociation", idAssociationParameter);
+        }
+    
+        public virtual ObjectResult<sp_nbPartnershipsByActionByYear_Result1> sp_nbPartnershipsByActionByYear()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_nbPartnershipsByActionByYear_Result1>("sp_nbPartnershipsByActionByYear");
         }
     }
 }

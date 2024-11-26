@@ -401,7 +401,7 @@ go
 create procedure sp_nbPartnershipsByActionByYear
 as
 begin
-	select libel,ChoosenCountryYears.choosenYear as year,count(Partnerships.id)
+	select libel,ChoosenCountryYears.choosenYear as year,count(Partnerships.id) as nbPartnerships
 	from Partnerships
 	join Actions on action_id=Actions.id
 	join Country on Country.id = country_id
@@ -409,3 +409,16 @@ begin
 	group by libel,ChoosenCountryYears.choosenYear
 end
 go
+drop procedure sp_nbPartnershipsByActionByYear
+
+create procedure sp_ActionsByAssociation(@idAssociation int)
+as
+begin
+	select distinct libel 
+	from Actions 
+	join Partnerships on Partnerships.action_id=Actions.id 
+	where association_id=@idAssociation ;
+end
+go
+
+drop procedure sp_ActionsByAssociation

@@ -181,6 +181,9 @@
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="libel" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="sp_ActionsByAssociation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="idAssociation" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_associations_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
           <Parameter Name="responsable" Type="varchar" Mode="In" />
@@ -705,7 +708,6 @@
             <Parameter Name="libel" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_nbAssociationByCountry" ReturnType="Collection(ProGestionModel.sp_nbAssociationByCountry_Result)" />
-          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(ProGestionModel.sp_nbPartnershipsByActionByYear_Result)" />
           <FunctionImport Name="sp_partnerships_add">
             <Parameter Name="action_id" Mode="In" Type="Int32" />
             <Parameter Name="association_id" Mode="In" Type="Int32" />
@@ -783,6 +785,10 @@
           <FunctionImport Name="sp_users_getByLogin" ReturnType="Collection(ProGestionModel.sp_users_getByLogin_Result)">
           <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="sp_ActionsByAssociation" ReturnType="Collection(String)">
+          <Parameter Name="idAssociation" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(ProGestionModel.sp_nbPartnershipsByActionByYear_Result1)" />
         </EntityContainer>
         <ComplexType Name="sp_actions_getAll_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -957,6 +963,26 @@
           <Property Type="String" Name="login" Nullable="false" MaxLength="40" />
           <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
           <Property Type="Int32" Name="role_id" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear1_Result">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear2_Result">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear3_Result">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_nbPartnershipsByActionByYear_Result1">
+          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
+          <Property Type="Int32" Name="year" Nullable="false" />
+          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1221,15 +1247,6 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="ProGestionModel.Store.sp_nbPartnershipsByActionByYear">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbPartnershipsByActionByYear_Result">
-                <ScalarProperty Name="libel" ColumnName="libel" />
-                <ScalarProperty Name="year" ColumnName="year" />
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_partnerships_add" FunctionName="ProGestionModel.Store.sp_partnerships_add" />
           <FunctionImportMapping FunctionImportName="sp_partnerships_delete" FunctionName="ProGestionModel.Store.sp_partnerships_delete" />
           <FunctionImportMapping FunctionImportName="sp_partnerships_getAll" FunctionName="ProGestionModel.Store.sp_partnerships_getAll">
@@ -1355,6 +1372,16 @@
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_ActionsByAssociation" FunctionName="ProGestionModel.Store.sp_ActionsByAssociation" />
+          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="ProGestionModel.Store.sp_nbPartnershipsByActionByYear">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbPartnershipsByActionByYear_Result1">
+                <ScalarProperty Name="libel" ColumnName="libel" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="nbPartnerships" ColumnName="nbPartnerships" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

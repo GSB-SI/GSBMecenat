@@ -81,6 +81,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="IndicatorDAO.cs" />
     <Compile Include="InterventionsLog.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
@@ -148,7 +149,19 @@
     <Compile Include="sp_nbAssociationByCountry_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_nbPartnershipsByActionByYear1_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_nbPartnershipsByActionByYear2_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_nbPartnershipsByActionByYear3_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_nbPartnershipsByActionByYear_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_nbPartnershipsByActionByYear_Result1.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_partnerships_getAll_Result.cs">

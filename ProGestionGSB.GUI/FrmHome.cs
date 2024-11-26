@@ -33,5 +33,17 @@ namespace ProGestionGSB.GUI
             FrmPartnership frm = new FrmPartnership();
             frm.ShowDialog();
         }
+
+        private void btnShowActionsByAssociation_Click(object sender, EventArgs e)
+        {
+            FrmShowActionByAssociation frm = new FrmShowActionByAssociation();
+            frm.ShowDialog();
+        }
+
+        private void btnShowIndicators_Click(object sender, EventArgs e)
+        {
+            FrmIndicator frm = new FrmIndicator();
+            frm.ShowDialog();
+        }
     }
 }

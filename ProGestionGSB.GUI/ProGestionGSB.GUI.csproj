@@ -89,11 +89,23 @@
     <Compile Include="FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmIndicator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndicator.Designer.cs">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPartnership.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPartnership.Designer.cs">
       <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.Designer.cs">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmUpdateAssociation.cs">
       <SubType>Form</SubType>
@@ -127,8 +139,14 @@
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndicator.resx">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPartnership.resx">
       <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowActionByAssociation.resx">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdateAssociation.resx">
       <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>

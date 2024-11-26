@@ -99,6 +99,7 @@
             this.btnShowActionsByAssociation.TabIndex = 5;
             this.btnShowActionsByAssociation.Text = "Consultation de la liste des actions de mécénat par association";
             this.btnShowActionsByAssociation.UseVisualStyleBackColor = true;
+            this.btnShowActionsByAssociation.Click += new System.EventHandler(this.btnShowActionsByAssociation_Click);
             // 
             // btnShowIndicators
             // 
@@ -109,6 +110,7 @@
             this.btnShowIndicators.TabIndex = 6;
             this.btnShowIndicators.Text = "Indicateurs";
             this.btnShowIndicators.UseVisualStyleBackColor = true;
+            this.btnShowIndicators.Click += new System.EventHandler(this.btnShowIndicators_Click);
             // 
             // btnExit
             // 

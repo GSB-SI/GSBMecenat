@@ -180,7 +180,13 @@
     <Compile Include="sp_users_getAll_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_users_getById1_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="sp_users_getbyId_Result.cs">
+      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_users_getByLogin_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">

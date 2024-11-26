@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProGestionGSB.DAL
 {
@@ -97,6 +95,22 @@ namespace ProGestionGSB.DAL
             {
                 throw new Exception("An error occurred while deleting the user.", ex);
 
+            }
+        }
+
+        public sp_users_getByLogin_Result GetUserByLogin(string login)
+        {
+            try
+            {
+                using (GSBMecenatEntities ctx = new GSBMecenatEntities())
+                {
+                    var result = ctx.sp_users_getByLogin(login).FirstOrDefault();
+                    return result ?? throw new Exception("User not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while retrieving the user.", ex);
             }
         }
     }

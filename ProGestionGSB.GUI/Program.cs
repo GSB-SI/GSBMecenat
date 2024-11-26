@@ -13,7 +13,7 @@ namespace ProGestionGSB.GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmBudgets());
+            Application.Run(new FrmUsers());
         }
     }
 }

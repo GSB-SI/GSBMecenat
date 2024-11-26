@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="ActionManager.cs" />
     <Compile Include="AssociationManager.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="BudgetManager.cs" />
     <Compile Include="CountryManager.cs" />
     <Compile Include="MissionManager.cs" />

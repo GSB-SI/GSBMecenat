@@ -65,7 +65,6 @@
     <Compile Include="ChoosenCountryYear.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>

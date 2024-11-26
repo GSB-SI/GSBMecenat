@@ -112,15 +112,7 @@
             // 
             // userManagerBindingSource
             // 
-            this.userManagerBindingSource.DataSource = typeof(ProGestionGSB.BLL.UserManager);
-            // 
-            // class1BindingSource
-            // 
-            this.class1BindingSource.DataSource = typeof(ProGestionGSB.DAL.Class1);
-            // 
-            // class1BindingSource1
-            // 
-            this.class1BindingSource1.DataSource = typeof(ProGestionGSB.DAL.Class1);
+            this.userManagerBindingSource.DataSource = typeof(ProGestionGSB.BLL.UserManager); 
             // 
             // FrmUsers
             // 

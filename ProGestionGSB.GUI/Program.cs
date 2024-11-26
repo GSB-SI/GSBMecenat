@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
@@ -16,7 +13,7 @@ namespace ProGestionGSB.GUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmHome());
+            Application.Run(new FrmLogin());
         }
     }
 }

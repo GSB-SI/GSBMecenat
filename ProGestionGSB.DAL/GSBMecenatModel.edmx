@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ProGestionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GSBMecenatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Actions">
           <Key>
             <PropertyRef Name="id" />
@@ -348,7 +348,7 @@
           <Parameter Name="password" Type="varchar" Mode="In" />
           <Parameter Name="role_id" Type="int" Mode="In" />
         </Function>
-        <EntityContainer Name="ProGestionModelStoreContainer">
+        <EntityContainer Name="GSBMecenatModelStoreContainer">
           <EntitySet Name="Actions" EntityType="Self.Actions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Associations" EntityType="Self.Associations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChoosenCountryYears" EntityType="Self.ChoosenCountryYears" Schema="dbo" store:Type="Tables" />
@@ -390,7 +390,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ProGestionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="GSBMecenatModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Action">
           <Key>
             <PropertyRef Name="id" />
@@ -611,8 +611,8 @@
           <FunctionImport Name="sp_actions_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_actions_getAll" ReturnType="Collection(ProGestionModel.sp_actions_getAll_Result)" />
-          <FunctionImport Name="sp_actions_getById" ReturnType="Collection(ProGestionModel.sp_actions_getById_Result)">
+          <FunctionImport Name="sp_actions_getAll" ReturnType="Collection(GSBMecenatModel.sp_actions_getAll_Result)" />
+          <FunctionImport Name="sp_actions_getById" ReturnType="Collection(GSBMecenatModel.sp_actions_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_actions_update">
@@ -628,8 +628,8 @@
           <FunctionImport Name="sp_associations_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_associations_getAll" ReturnType="Collection(ProGestionModel.sp_associations_getAll_Result)" />
-          <FunctionImport Name="sp_associations_getById" ReturnType="Collection(ProGestionModel.sp_associations_getById_Result)">
+          <FunctionImport Name="sp_associations_getAll" ReturnType="Collection(GSBMecenatModel.sp_associations_getAll_Result)" />
+          <FunctionImport Name="sp_associations_getById" ReturnType="Collection(GSBMecenatModel.sp_associations_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_associations_update">
@@ -647,8 +647,8 @@
             <Parameter Name="country_id" Mode="In" Type="Int32" />
             <Parameter Name="choosenYear" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_choosenCountryYears_getAll" ReturnType="Collection(ProGestionModel.sp_choosenCountryYears_getAll_Result)" />
-          <FunctionImport Name="sp_choosenCountryYears_getByYear" ReturnType="Collection(ProGestionModel.sp_choosenCountryYears_getByYear_Result)">
+          <FunctionImport Name="sp_choosenCountryYears_getAll" ReturnType="Collection(GSBMecenatModel.sp_choosenCountryYears_getAll_Result)" />
+          <FunctionImport Name="sp_choosenCountryYears_getByYear" ReturnType="Collection(GSBMecenatModel.sp_choosenCountryYears_getByYear_Result)">
           <Parameter Name="choosenYear" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_choosenCountryYears_update">
@@ -663,11 +663,11 @@
           <FunctionImport Name="sp_country_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_country_getAll" ReturnType="Collection(ProGestionModel.sp_country_getAll_Result)" />
-          <FunctionImport Name="sp_country_getById" ReturnType="Collection(ProGestionModel.sp_country_getById_Result)">
+          <FunctionImport Name="sp_country_getAll" ReturnType="Collection(GSBMecenatModel.sp_country_getAll_Result)" />
+          <FunctionImport Name="sp_country_getById" ReturnType="Collection(GSBMecenatModel.sp_country_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_country_getByIsoCode" ReturnType="Collection(ProGestionModel.sp_country_getByIsoCode_Result)">
+          <FunctionImport Name="sp_country_getByIsoCode" ReturnType="Collection(GSBMecenatModel.sp_country_getByIsoCode_Result)">
           <Parameter Name="isoCode" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_country_update">
@@ -680,17 +680,17 @@
             <Parameter Name="operation" Mode="In" Type="String" />
             <Parameter Name="reference" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_interventionLogs_getAll" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getAll_Result)" />
-          <FunctionImport Name="sp_interventionLogs_getById" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getById_Result)">
+          <FunctionImport Name="sp_interventionLogs_getAll" ReturnType="Collection(GSBMecenatModel.sp_interventionLogs_getAll_Result)" />
+          <FunctionImport Name="sp_interventionLogs_getById" ReturnType="Collection(GSBMecenatModel.sp_interventionLogs_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_interventionLogs_getByOperation" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByOperation_Result)">
+          <FunctionImport Name="sp_interventionLogs_getByOperation" ReturnType="Collection(GSBMecenatModel.sp_interventionLogs_getByOperation_Result)">
           <Parameter Name="operation" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_interventionLogs_getByReference" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByReference_Result)">
+          <FunctionImport Name="sp_interventionLogs_getByReference" ReturnType="Collection(GSBMecenatModel.sp_interventionLogs_getByReference_Result)">
           <Parameter Name="reference" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_interventionLogs_getByTableName" ReturnType="Collection(ProGestionModel.sp_interventionLogs_getByTableName_Result)">
+          <FunctionImport Name="sp_interventionLogs_getByTableName" ReturnType="Collection(GSBMecenatModel.sp_interventionLogs_getByTableName_Result)">
           <Parameter Name="tableName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_missions_add">
@@ -699,15 +699,16 @@
           <FunctionImport Name="sp_missions_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_missions_getAll" ReturnType="Collection(ProGestionModel.sp_missions_getAll_Result)" />
-          <FunctionImport Name="sp_missions_getById" ReturnType="Collection(ProGestionModel.sp_missions_getById_Result)">
+          <FunctionImport Name="sp_missions_getAll" ReturnType="Collection(GSBMecenatModel.sp_missions_getAll_Result)" />
+          <FunctionImport Name="sp_missions_getById" ReturnType="Collection(GSBMecenatModel.sp_missions_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_missions_update">
             <Parameter Name="id" Mode="In" Type="Int32" />
             <Parameter Name="libel" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_nbAssociationByCountry" ReturnType="Collection(ProGestionModel.sp_nbAssociationByCountry_Result)" />
+          <FunctionImport Name="sp_nbAssociationByCountry" ReturnType="Collection(GSBMecenatModel.sp_nbAssociationByCountry_Result)" />
+          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result)" />
           <FunctionImport Name="sp_partnerships_add">
             <Parameter Name="action_id" Mode="In" Type="Int32" />
             <Parameter Name="association_id" Mode="In" Type="Int32" />
@@ -716,17 +717,17 @@
           <FunctionImport Name="sp_partnerships_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_partnerships_getAll" ReturnType="Collection(ProGestionModel.sp_partnerships_getAll_Result)" />
-          <FunctionImport Name="sp_partnerships_getByActionId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByActionId_Result)">
+          <FunctionImport Name="sp_partnerships_getAll" ReturnType="Collection(GSBMecenatModel.sp_partnerships_getAll_Result)" />
+          <FunctionImport Name="sp_partnerships_getByActionId" ReturnType="Collection(GSBMecenatModel.sp_partnerships_getByActionId_Result)">
           <Parameter Name="action_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_partnerships_getByAssociationId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByAssociationId_Result)">
+          <FunctionImport Name="sp_partnerships_getByAssociationId" ReturnType="Collection(GSBMecenatModel.sp_partnerships_getByAssociationId_Result)">
           <Parameter Name="association_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_partnerships_getByCountryId" ReturnType="Collection(ProGestionModel.sp_partnerships_getByCountryId_Result)">
+          <FunctionImport Name="sp_partnerships_getByCountryId" ReturnType="Collection(GSBMecenatModel.sp_partnerships_getByCountryId_Result)">
           <Parameter Name="country_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_partnerships_getById" ReturnType="Collection(ProGestionModel.sp_partnerships_getById_Result)">
+          <FunctionImport Name="sp_partnerships_getById" ReturnType="Collection(GSBMecenatModel.sp_partnerships_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_partnerships_update">
@@ -753,8 +754,8 @@
           <FunctionImport Name="sp_role_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_role_getAll" ReturnType="Collection(ProGestionModel.sp_role_getAll_Result)" />
-          <FunctionImport Name="sp_role_getById" ReturnType="Collection(ProGestionModel.sp_role_getById_Result)">
+          <FunctionImport Name="sp_role_getAll" ReturnType="Collection(GSBMecenatModel.sp_role_getAll_Result)" />
+          <FunctionImport Name="sp_role_getById" ReturnType="Collection(GSBMecenatModel.sp_role_getById_Result)">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_role_update">
@@ -769,8 +770,8 @@
           <FunctionImport Name="sp_users_delete">
           <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_users_getAll" ReturnType="Collection(ProGestionModel.sp_users_getAll_Result)" />
-          <FunctionImport Name="sp_users_getbyId" ReturnType="Collection(ProGestionModel.sp_users_getbyId_Result)">
+          <FunctionImport Name="sp_users_getAll" ReturnType="Collection(GSBMecenatModel.sp_users_getAll_Result)" />
+          <FunctionImport Name="sp_users_getbyId" ReturnType="Collection(GSBMecenatModel.sp_users_getbyId_Result)">
             <Parameter Name="id" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_users_update">
@@ -779,16 +780,16 @@
             <Parameter Name="password" Mode="In" Type="String" />
             <Parameter Name="role_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_users_getById1" ReturnType="Collection(ProGestionModel.sp_users_getById1_Result)">
-          <Parameter Name="id" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_users_getByLogin" ReturnType="Collection(ProGestionModel.sp_users_getByLogin_Result)">
-          <Parameter Name="login" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="sp_ActionsByAssociation" ReturnType="Collection(String)">
           <Parameter Name="idAssociation" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(ProGestionModel.sp_nbPartnershipsByActionByYear_Result1)" />
+          <FunctionImport Name="sp_nbPartnershipsByActionByYear" ReturnType="Collection(GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result1)" />
+          <FunctionImport Name="sp_users_getById1" ReturnType="Collection(GSBMecenatModel.sp_users_getById1_Result)">
+            <Parameter Name="id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_getByLogin" ReturnType="Collection(GSBMecenatModel.sp_users_getByLogin_Result)">
+            <Parameter Name="login" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_actions_getAll_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
@@ -964,21 +965,6 @@
           <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
           <Property Type="Int32" Name="role_id" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="sp_nbPartnershipsByActionByYear1_Result">
-          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
-          <Property Type="Int32" Name="year" Nullable="false" />
-          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_nbPartnershipsByActionByYear2_Result">
-          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
-          <Property Type="Int32" Name="year" Nullable="false" />
-          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="sp_nbPartnershipsByActionByYear3_Result">
-          <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
-          <Property Type="Int32" Name="year" Nullable="false" />
-          <Property Type="Int32" Name="nbPartnerships" Nullable="true" />
-        </ComplexType>
         <ComplexType Name="sp_nbPartnershipsByActionByYear_Result1">
           <Property Type="String" Name="libel" Nullable="false" MaxLength="40" />
           <Property Type="Int32" Name="year" Nullable="false" />
@@ -989,9 +975,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ProGestionModelStoreContainer" CdmEntityContainer="GSBMecenatEntities">
+        <EntityContainerMapping StorageEntityContainer="GSBMecenatModelStoreContainer" CdmEntityContainer="GSBMecenatEntities">
           <EntitySetMapping Name="Actions">
-            <EntityTypeMapping TypeName="ProGestionModel.Action">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Action">
               <MappingFragment StoreEntitySet="Actions">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
@@ -999,7 +985,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Associations">
-            <EntityTypeMapping TypeName="ProGestionModel.Association">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Association">
               <MappingFragment StoreEntitySet="Associations">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1010,7 +996,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ChoosenCountryYears">
-            <EntityTypeMapping TypeName="ProGestionModel.ChoosenCountryYear">
+            <EntityTypeMapping TypeName="GSBMecenatModel.ChoosenCountryYear">
               <MappingFragment StoreEntitySet="ChoosenCountryYears">
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
                 <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
@@ -1018,7 +1004,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Countries">
-            <EntityTypeMapping TypeName="ProGestionModel.Country">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Country">
               <MappingFragment StoreEntitySet="Country">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1027,7 +1013,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InterventionsLogs">
-            <EntityTypeMapping TypeName="ProGestionModel.InterventionsLog">
+            <EntityTypeMapping TypeName="GSBMecenatModel.InterventionsLog">
               <MappingFragment StoreEntitySet="InterventionsLogs">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
@@ -1037,7 +1023,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Missions">
-            <EntityTypeMapping TypeName="ProGestionModel.Mission">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Mission">
               <MappingFragment StoreEntitySet="Missions">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
@@ -1045,7 +1031,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Partnerships">
-            <EntityTypeMapping TypeName="ProGestionModel.Partnership">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Partnership">
               <MappingFragment StoreEntitySet="Partnerships">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -1059,7 +1045,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="ProGestionModel.Role">
+            <EntityTypeMapping TypeName="GSBMecenatModel.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
@@ -1067,7 +1053,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="ProGestionModel.User">
+            <EntityTypeMapping TypeName="GSBMecenatModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
@@ -1076,30 +1062,30 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_actions_add" FunctionName="ProGestionModel.Store.sp_actions_add" />
-          <FunctionImportMapping FunctionImportName="sp_actions_delete" FunctionName="ProGestionModel.Store.sp_actions_delete" />
-          <FunctionImportMapping FunctionImportName="sp_actions_getAll" FunctionName="ProGestionModel.Store.sp_actions_getAll">
+          <FunctionImportMapping FunctionImportName="sp_actions_add" FunctionName="GSBMecenatModel.Store.sp_actions_add" />
+          <FunctionImportMapping FunctionImportName="sp_actions_delete" FunctionName="GSBMecenatModel.Store.sp_actions_delete" />
+          <FunctionImportMapping FunctionImportName="sp_actions_getAll" FunctionName="GSBMecenatModel.Store.sp_actions_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_actions_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_actions_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_actions_getById" FunctionName="ProGestionModel.Store.sp_actions_getById">
+          <FunctionImportMapping FunctionImportName="sp_actions_getById" FunctionName="GSBMecenatModel.Store.sp_actions_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_actions_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_actions_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_actions_update" FunctionName="ProGestionModel.Store.sp_actions_update" />
-          <FunctionImportMapping FunctionImportName="sp_associations_add" FunctionName="ProGestionModel.Store.sp_associations_add" />
-          <FunctionImportMapping FunctionImportName="sp_associations_delete" FunctionName="ProGestionModel.Store.sp_associations_delete" />
-          <FunctionImportMapping FunctionImportName="sp_associations_getAll" FunctionName="ProGestionModel.Store.sp_associations_getAll">
+          <FunctionImportMapping FunctionImportName="sp_actions_update" FunctionName="GSBMecenatModel.Store.sp_actions_update" />
+          <FunctionImportMapping FunctionImportName="sp_associations_add" FunctionName="GSBMecenatModel.Store.sp_associations_add" />
+          <FunctionImportMapping FunctionImportName="sp_associations_delete" FunctionName="GSBMecenatModel.Store.sp_associations_delete" />
+          <FunctionImportMapping FunctionImportName="sp_associations_getAll" FunctionName="GSBMecenatModel.Store.sp_associations_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_associations_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_associations_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="responsable" ColumnName="responsable" />
@@ -1108,9 +1094,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_associations_getById" FunctionName="ProGestionModel.Store.sp_associations_getById">
+          <FunctionImportMapping FunctionImportName="sp_associations_getById" FunctionName="GSBMecenatModel.Store.sp_associations_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_associations_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_associations_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="responsable" ColumnName="responsable" />
@@ -1119,60 +1105,60 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_associations_update" FunctionName="ProGestionModel.Store.sp_associations_update" />
-          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_add" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_add" />
-          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_delete" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_delete" />
-          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getAll" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_getAll">
+          <FunctionImportMapping FunctionImportName="sp_associations_update" FunctionName="GSBMecenatModel.Store.sp_associations_update" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_add" FunctionName="GSBMecenatModel.Store.sp_choosenCountryYears_add" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_delete" FunctionName="GSBMecenatModel.Store.sp_choosenCountryYears_delete" />
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getAll" FunctionName="GSBMecenatModel.Store.sp_choosenCountryYears_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_choosenCountryYears_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_choosenCountryYears_getAll_Result">
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
                 <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getByYear" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_getByYear">
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_getByYear" FunctionName="GSBMecenatModel.Store.sp_choosenCountryYears_getByYear">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_choosenCountryYears_getByYear_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_choosenCountryYears_getByYear_Result">
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
                 <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_update" FunctionName="ProGestionModel.Store.sp_choosenCountryYears_update" />
-          <FunctionImportMapping FunctionImportName="sp_country_add" FunctionName="ProGestionModel.Store.sp_country_add" />
-          <FunctionImportMapping FunctionImportName="sp_country_delete" FunctionName="ProGestionModel.Store.sp_country_delete" />
-          <FunctionImportMapping FunctionImportName="sp_country_getAll" FunctionName="ProGestionModel.Store.sp_country_getAll">
+          <FunctionImportMapping FunctionImportName="sp_choosenCountryYears_update" FunctionName="GSBMecenatModel.Store.sp_choosenCountryYears_update" />
+          <FunctionImportMapping FunctionImportName="sp_country_add" FunctionName="GSBMecenatModel.Store.sp_country_add" />
+          <FunctionImportMapping FunctionImportName="sp_country_delete" FunctionName="GSBMecenatModel.Store.sp_country_delete" />
+          <FunctionImportMapping FunctionImportName="sp_country_getAll" FunctionName="GSBMecenatModel.Store.sp_country_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_country_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="isoCode" ColumnName="isoCode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_country_getById" FunctionName="ProGestionModel.Store.sp_country_getById">
+          <FunctionImportMapping FunctionImportName="sp_country_getById" FunctionName="GSBMecenatModel.Store.sp_country_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_country_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="isoCode" ColumnName="isoCode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_country_getByIsoCode" FunctionName="ProGestionModel.Store.sp_country_getByIsoCode">
+          <FunctionImportMapping FunctionImportName="sp_country_getByIsoCode" FunctionName="GSBMecenatModel.Store.sp_country_getByIsoCode">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_country_getByIsoCode_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_country_getByIsoCode_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="isoCode" ColumnName="isoCode" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_country_update" FunctionName="ProGestionModel.Store.sp_country_update" />
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_add" FunctionName="ProGestionModel.Store.sp_interventionLogs_add" />
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getAll" FunctionName="ProGestionModel.Store.sp_interventionLogs_getAll">
+          <FunctionImportMapping FunctionImportName="sp_country_update" FunctionName="GSBMecenatModel.Store.sp_country_update" />
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_add" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_add" />
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getAll" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_interventionLogs_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
                 <ScalarProperty Name="operation" ColumnName="operation" />
@@ -1180,9 +1166,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getById" FunctionName="ProGestionModel.Store.sp_interventionLogs_getById">
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getById" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_interventionLogs_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
                 <ScalarProperty Name="operation" ColumnName="operation" />
@@ -1190,9 +1176,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByOperation" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByOperation">
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByOperation" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_getByOperation">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByOperation_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_interventionLogs_getByOperation_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
                 <ScalarProperty Name="operation" ColumnName="operation" />
@@ -1200,9 +1186,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByReference" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByReference">
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByReference" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_getByReference">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByReference_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_interventionLogs_getByReference_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
                 <ScalarProperty Name="operation" ColumnName="operation" />
@@ -1210,9 +1196,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByTableName" FunctionName="ProGestionModel.Store.sp_interventionLogs_getByTableName">
+          <FunctionImportMapping FunctionImportName="sp_interventionLogs_getByTableName" FunctionName="GSBMecenatModel.Store.sp_interventionLogs_getByTableName">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_interventionLogs_getByTableName_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_interventionLogs_getByTableName_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tableName" ColumnName="tableName" />
                 <ScalarProperty Name="operation" ColumnName="operation" />
@@ -1220,38 +1206,47 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_missions_add" FunctionName="ProGestionModel.Store.sp_missions_add" />
-          <FunctionImportMapping FunctionImportName="sp_missions_delete" FunctionName="ProGestionModel.Store.sp_missions_delete" />
-          <FunctionImportMapping FunctionImportName="sp_missions_getAll" FunctionName="ProGestionModel.Store.sp_missions_getAll">
+          <FunctionImportMapping FunctionImportName="sp_missions_add" FunctionName="GSBMecenatModel.Store.sp_missions_add" />
+          <FunctionImportMapping FunctionImportName="sp_missions_delete" FunctionName="GSBMecenatModel.Store.sp_missions_delete" />
+          <FunctionImportMapping FunctionImportName="sp_missions_getAll" FunctionName="GSBMecenatModel.Store.sp_missions_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_missions_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_missions_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_missions_getById" FunctionName="ProGestionModel.Store.sp_missions_getById">
+          <FunctionImportMapping FunctionImportName="sp_missions_getById" FunctionName="GSBMecenatModel.Store.sp_missions_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_missions_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_missions_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_missions_update" FunctionName="ProGestionModel.Store.sp_missions_update" />
-          <FunctionImportMapping FunctionImportName="sp_nbAssociationByCountry" FunctionName="ProGestionModel.Store.sp_nbAssociationByCountry">
+          <FunctionImportMapping FunctionImportName="sp_missions_update" FunctionName="GSBMecenatModel.Store.sp_missions_update" />
+          <FunctionImportMapping FunctionImportName="sp_nbAssociationByCountry" FunctionName="GSBMecenatModel.Store.sp_nbAssociationByCountry">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbAssociationByCountry_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_nbAssociationByCountry_Result">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_add" FunctionName="ProGestionModel.Store.sp_partnerships_add" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_delete" FunctionName="ProGestionModel.Store.sp_partnerships_delete" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_getAll" FunctionName="ProGestionModel.Store.sp_partnerships_getAll">
+          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="GSBMecenatModel.Store.sp_nbPartnershipsByActionByYear">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result">
+                <ScalarProperty Name="libel" ColumnName="libel" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_partnerships_add" FunctionName="GSBMecenatModel.Store.sp_partnerships_add" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_delete" FunctionName="GSBMecenatModel.Store.sp_partnerships_delete" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getAll" FunctionName="GSBMecenatModel.Store.sp_partnerships_getAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_partnerships_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="plafond" ColumnName="plafond" />
@@ -1263,9 +1258,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_getByActionId" FunctionName="ProGestionModel.Store.sp_partnerships_getByActionId">
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByActionId" FunctionName="GSBMecenatModel.Store.sp_partnerships_getByActionId">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByActionId_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_partnerships_getByActionId_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="plafond" ColumnName="plafond" />
@@ -1277,9 +1272,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_getByAssociationId" FunctionName="ProGestionModel.Store.sp_partnerships_getByAssociationId">
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByAssociationId" FunctionName="GSBMecenatModel.Store.sp_partnerships_getByAssociationId">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByAssociationId_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_partnerships_getByAssociationId_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="plafond" ColumnName="plafond" />
@@ -1291,9 +1286,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_getByCountryId" FunctionName="ProGestionModel.Store.sp_partnerships_getByCountryId">
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getByCountryId" FunctionName="GSBMecenatModel.Store.sp_partnerships_getByCountryId">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getByCountryId_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_partnerships_getByCountryId_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="plafond" ColumnName="plafond" />
@@ -1305,9 +1300,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_getById" FunctionName="ProGestionModel.Store.sp_partnerships_getById">
+          <FunctionImportMapping FunctionImportName="sp_partnerships_getById" FunctionName="GSBMecenatModel.Store.sp_partnerships_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_partnerships_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_partnerships_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="plafond" ColumnName="plafond" />
@@ -1319,34 +1314,34 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_partnerships_update" FunctionName="ProGestionModel.Store.sp_partnerships_update" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_updateForecastBudget" FunctionName="ProGestionModel.Store.sp_partnerships_updateForecastBudget" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_updatePlafond" FunctionName="ProGestionModel.Store.sp_partnerships_updatePlafond" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_updateRealBudget" FunctionName="ProGestionModel.Store.sp_partnerships_updateRealBudget" />
-          <FunctionImportMapping FunctionImportName="sp_role_add" FunctionName="ProGestionModel.Store.sp_role_add" />
-          <FunctionImportMapping FunctionImportName="sp_role_delete" FunctionName="ProGestionModel.Store.sp_role_delete" />
-          <FunctionImportMapping FunctionImportName="sp_role_getAll" FunctionName="ProGestionModel.Store.sp_role_getAll">
+          <FunctionImportMapping FunctionImportName="sp_partnerships_update" FunctionName="GSBMecenatModel.Store.sp_partnerships_update" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updateForecastBudget" FunctionName="GSBMecenatModel.Store.sp_partnerships_updateForecastBudget" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updatePlafond" FunctionName="GSBMecenatModel.Store.sp_partnerships_updatePlafond" />
+          <FunctionImportMapping FunctionImportName="sp_partnerships_updateRealBudget" FunctionName="GSBMecenatModel.Store.sp_partnerships_updateRealBudget" />
+          <FunctionImportMapping FunctionImportName="sp_role_add" FunctionName="GSBMecenatModel.Store.sp_role_add" />
+          <FunctionImportMapping FunctionImportName="sp_role_delete" FunctionName="GSBMecenatModel.Store.sp_role_delete" />
+          <FunctionImportMapping FunctionImportName="sp_role_getAll" FunctionName="GSBMecenatModel.Store.sp_role_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_role_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_role_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_role_getById" FunctionName="ProGestionModel.Store.sp_role_getById">
+          <FunctionImportMapping FunctionImportName="sp_role_getById" FunctionName="GSBMecenatModel.Store.sp_role_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_role_getById_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_role_getById_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libel" ColumnName="libel" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_role_update" FunctionName="ProGestionModel.Store.sp_role_update" />
-          <FunctionImportMapping FunctionImportName="sp_users_add" FunctionName="ProGestionModel.Store.sp_users_add" />
-          <FunctionImportMapping FunctionImportName="sp_users_delete" FunctionName="ProGestionModel.Store.sp_users_delete" />
-          <FunctionImportMapping FunctionImportName="sp_users_getAll" FunctionName="ProGestionModel.Store.sp_users_getAll">
+          <FunctionImportMapping FunctionImportName="sp_role_update" FunctionName="GSBMecenatModel.Store.sp_role_update" />
+          <FunctionImportMapping FunctionImportName="sp_users_add" FunctionName="GSBMecenatModel.Store.sp_users_add" />
+          <FunctionImportMapping FunctionImportName="sp_users_delete" FunctionName="GSBMecenatModel.Store.sp_users_delete" />
+          <FunctionImportMapping FunctionImportName="sp_users_getAll" FunctionName="GSBMecenatModel.Store.sp_users_getAll">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_users_getAll_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_users_getAll_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -1354,10 +1349,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_users_update" FunctionName="ProGestionModel.Store.sp_users_update" />
-          <FunctionImportMapping FunctionImportName="sp_users_getById1" FunctionName="ProGestionModel.Store.sp_users_getById">
+          <FunctionImportMapping FunctionImportName="sp_users_update" FunctionName="GSBMecenatModel.Store.sp_users_update" />
+          <FunctionImportMapping FunctionImportName="sp_users_getById1" FunctionName="GSBMecenatModel.Store.sp_users_getById">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_users_getById1_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_users_getById1_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -1365,9 +1360,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_users_getByLogin" FunctionName="ProGestionModel.Store.sp_users_getByLogin">
+          <FunctionImportMapping FunctionImportName="sp_users_getByLogin" FunctionName="GSBMecenatModel.Store.sp_users_getByLogin">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_users_getByLogin_Result">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_users_getByLogin_Result">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -1375,10 +1370,10 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_ActionsByAssociation" FunctionName="ProGestionModel.Store.sp_ActionsByAssociation" />
-          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="ProGestionModel.Store.sp_nbPartnershipsByActionByYear">
+          <FunctionImportMapping FunctionImportName="sp_ActionsByAssociation" FunctionName="GSBMecenatModel.Store.sp_ActionsByAssociation" />
+          <FunctionImportMapping FunctionImportName="sp_nbPartnershipsByActionByYear" FunctionName="GSBMecenatModel.Store.sp_nbPartnershipsByActionByYear">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ProGestionModel.sp_nbPartnershipsByActionByYear_Result1">
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_nbPartnershipsByActionByYear_Result1">
                 <ScalarProperty Name="libel" ColumnName="libel" />
                 <ScalarProperty Name="year" ColumnName="year" />
                 <ScalarProperty Name="nbPartnerships" ColumnName="nbPartnerships" />

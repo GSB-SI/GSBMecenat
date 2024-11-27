@@ -30,6 +30,8 @@
         {
             this.cboPartnerships = new System.Windows.Forms.ComboBox();
             this.gbForm = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtRealBudget = new System.Windows.Forms.TextBox();
             this.lblForecastBudget = new System.Windows.Forms.Label();
             this.txtForecastBudget = new System.Windows.Forms.TextBox();
             this.lblPlafond = new System.Windows.Forms.Label();
@@ -37,8 +39,6 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtRealBudget = new System.Windows.Forms.TextBox();
             this.gbForm.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -67,6 +67,26 @@
             this.gbForm.TabStop = false;
             this.gbForm.Text = "Formulaire de modifications";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(278, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(91, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Budget réel";
+            // 
+            // txtRealBudget
+            // 
+            this.txtRealBudget.BackColor = System.Drawing.Color.White;
+            this.txtRealBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRealBudget.Location = new System.Drawing.Point(282, 73);
+            this.txtRealBudget.MinimumSize = new System.Drawing.Size(200, 28);
+            this.txtRealBudget.Name = "txtRealBudget";
+            this.txtRealBudget.Size = new System.Drawing.Size(200, 26);
+            this.txtRealBudget.TabIndex = 10;
+            // 
             // lblForecastBudget
             // 
             this.lblForecastBudget.AutoSize = true;
@@ -84,7 +104,7 @@
             this.txtForecastBudget.Location = new System.Drawing.Point(19, 166);
             this.txtForecastBudget.MinimumSize = new System.Drawing.Size(200, 28);
             this.txtForecastBudget.Name = "txtForecastBudget";
-            this.txtForecastBudget.Size = new System.Drawing.Size(200, 28);
+            this.txtForecastBudget.Size = new System.Drawing.Size(200, 26);
             this.txtForecastBudget.TabIndex = 8;
             // 
             // lblPlafond
@@ -104,7 +124,7 @@
             this.txtPlafond.Location = new System.Drawing.Point(19, 73);
             this.txtPlafond.MinimumSize = new System.Drawing.Size(200, 28);
             this.txtPlafond.Name = "txtPlafond";
-            this.txtPlafond.Size = new System.Drawing.Size(200, 28);
+            this.txtPlafond.Size = new System.Drawing.Size(200, 26);
             this.txtPlafond.TabIndex = 6;
             // 
             // btnClose
@@ -138,26 +158,6 @@
             this.lblTitle.Size = new System.Drawing.Size(260, 29);
             this.lblTitle.TabIndex = 13;
             this.lblTitle.Text = "Mettre à jour un budget";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(278, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "Budget réel";
-            // 
-            // txtRealBudget
-            // 
-            this.txtRealBudget.BackColor = System.Drawing.Color.White;
-            this.txtRealBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRealBudget.Location = new System.Drawing.Point(282, 73);
-            this.txtRealBudget.MinimumSize = new System.Drawing.Size(200, 28);
-            this.txtRealBudget.Name = "txtRealBudget";
-            this.txtRealBudget.Size = new System.Drawing.Size(200, 28);
-            this.txtRealBudget.TabIndex = 10;
             // 
             // FrmUpdatebudget
             // 

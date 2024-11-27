@@ -1,13 +1,17 @@
-﻿using System;
+﻿using ProGestionGSB.DAL;
+using System;
 using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
 {
     public partial class FrmHome : Form
     {
+
+        public User utilisateurAuthentifie;
         public FrmHome()
         {
             InitializeComponent();
+            desactiveMenus();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -41,7 +45,7 @@ namespace ProGestionGSB.GUI
 
         private void btnManagePlafonds_Click(object sender, EventArgs e)
         {
-            FrmUpdatebudget frm = new FrmUpdatebudget();
+            FrmUpdatebudget frm = new FrmUpdatebudget(utilisateurAuthentifie);
             frm.ShowDialog();
         }
 
@@ -49,6 +53,42 @@ namespace ProGestionGSB.GUI
         {
             FrmUsers frm = new FrmUsers();
             frm.ShowDialog();
+        }
+
+        private void desactiveMenus()
+        {
+            btnManageAssociations.Enabled = false;
+            btnManagePartnerships.Enabled = false;
+            btnShowActionsByAssociation.Enabled = false;
+            btnShowIndicators.Enabled = false;
+            btnManageUsers.Enabled = false;
+            btnManagePlafonds.Enabled = false;
+        }
+
+        private void FrmHome_Shown(object sender, EventArgs e)
+        {
+            using (FrmLogin formLogin = new FrmLogin())
+            {
+                formLogin.ShowDialog();
+                utilisateurAuthentifie = formLogin.User;
+            }
+            if (utilisateurAuthentifie != null)
+            {
+                activeMenus();
+            }
+        }
+
+        private void activeMenus()
+        {
+            if (utilisateurAuthentifie.Role.libel == "Administrateur")
+            {
+                btnManageUsers.Enabled = true;
+            }
+            btnManageAssociations.Enabled = true;
+            btnManagePartnerships.Enabled = true;
+            btnShowActionsByAssociation.Enabled = true;
+            btnShowIndicators.Enabled = true;
+            btnManagePlafonds.Enabled = true;
         }
     }
 }

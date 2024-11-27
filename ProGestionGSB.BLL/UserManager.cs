@@ -46,14 +46,7 @@ namespace ProGestionGSB.BLL
 
         public User GetInfosUtilisateur(string login, string password)
         {
-            var result = UserDAO.GetInstance().GetUserByLogin(login);
-            User user = new User
-            {
-                id = result.id,
-                login = result.login,
-                password = result.password,
-                role_id = result.role_id,
-            };
+            var user = UserDAO.GetInstance().GetUserByLogin(login);
             if (BCrypt.Net.BCrypt.EnhancedVerify(password, user.password) == false)
             {
                 user = null;

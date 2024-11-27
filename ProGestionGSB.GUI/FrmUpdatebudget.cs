@@ -7,14 +7,26 @@ namespace ProGestionGSB.GUI
 {
     public partial class FrmUpdatebudget : Form
     {
-        public FrmUpdatebudget()
+
+        private User utilisateurAuthentifie;
+        public FrmUpdatebudget(User user)
         {
             InitializeComponent();
+            utilisateurAuthentifie = user;
 
             cboPartnerships.DataSource = PartnershipManager.GetInstance().GetPartnerships();
             cboPartnerships.DisplayMember = "CountryNameDate";
             cboPartnerships.ValueMember = "id";
             cboPartnerships.SelectedIndex = -1;
+
+            if (utilisateurAuthentifie.Role.libel != "Directeur du service Financier")
+            {
+                txtRealBudget.Enabled = false;
+            }
+            if (utilisateurAuthentifie.Role.libel != "Directeur du service Partenariat et Communication")
+            {
+                txtRealBudget.Enabled = false;
+            }
         }
 
         private void cboPartnerships_SelectedIndexChanged(object sender, System.EventArgs e)

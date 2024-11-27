@@ -257,10 +257,6 @@
       <Project>{d6bc13d4-95e4-444d-b8cc-82aa5669c306}</Project>
       <Name>ProGestionGSB.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ProGestionGSB.BO\ProGestionGSB.BO.csproj">
-      <Project>{2b11771f-0ba7-4a84-8e6d-0b4bfbcbf9f7}</Project>
-      <Name>ProGestionGSB.BO</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ProGestionGSB.DAL\ProGestionGSB.DAL.csproj">
       <Project>{a3de21ed-5d9a-472c-8fc6-4360df50ea9b}</Project>
       <Name>ProGestionGSB.DAL</Name>

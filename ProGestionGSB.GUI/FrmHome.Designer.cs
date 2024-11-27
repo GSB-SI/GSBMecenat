@@ -140,6 +140,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "FrmHome";
             this.Text = "Accueil GSB Mécénat";
+            this.Shown += new System.EventHandler(this.FrmHome_Shown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

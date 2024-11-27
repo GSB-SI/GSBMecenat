@@ -25,7 +25,7 @@ namespace ProGestionGSB.DAL
             {
                 using (GSBMecenatEntities ctx = new GSBMecenatEntities())
                 {
-                    var result = ctx.Users.ToList();
+                    var result = ctx.Users.Include("Role").ToList();
                     return result ?? throw new Exception("Users not found.");
                 }
             }
@@ -98,13 +98,15 @@ namespace ProGestionGSB.DAL
             }
         }
 
-        public sp_users_getByLogin_Result GetUserByLogin(string login)
+        public User GetUserByLogin(string login)
         {
             try
             {
                 using (GSBMecenatEntities ctx = new GSBMecenatEntities())
                 {
-                    var result = ctx.sp_users_getByLogin(login).FirstOrDefault();
+                    var result = ctx.Users.Include("Role")
+                        .Where(u => u.login == login)
+                        .SingleOrDefault();
                     return result ?? throw new Exception("User not found.");
                 }
             }

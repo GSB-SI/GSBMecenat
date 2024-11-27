@@ -1,4 +1,5 @@
 ﻿using ProGestionGSB.BLL;
+using ProGestionGSB.DAL;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -6,9 +7,12 @@ namespace ProGestionGSB.GUI
 {
     public partial class FrmBudgets : Form
     {
-        public FrmBudgets()
+        private User utilisateurAuthentifie;
+
+        public FrmBudgets(User user)
         {
             InitializeComponent();
+            utilisateurAuthentifie = user;
 
             dgvBudgets.DataSource = PartnershipManager.GetInstance().GetPartnerships();
             dgvBudgets.Columns["Action"].Visible = false;
@@ -41,7 +45,7 @@ namespace ProGestionGSB.GUI
 
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
-            FrmUpdatebudget target = new FrmUpdatebudget();
+            FrmUpdatebudget target = new FrmUpdatebudget(utilisateurAuthentifie);
             target.ShowDialog();
             dgvBudgets.DataSource = PartnershipManager.GetInstance().GetPartnerships();
         }

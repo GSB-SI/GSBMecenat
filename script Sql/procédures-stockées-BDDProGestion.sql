@@ -95,6 +95,13 @@ begin
 end
 go
 
+create procedure sp_users_getByLogin(@login varchar(40))
+as
+begin
+	Select * from Users  where login=@login
+end
+go
+
 create procedure sp_users_add( @login varchar(40),@password varchar(40),@role_id int)
 as
 begin

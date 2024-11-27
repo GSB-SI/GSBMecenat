@@ -30,7 +30,6 @@ namespace ProGestionGSB.GUI
             dgvBudgets.Columns["CountryNameDate"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgvBudgets.Columns["CountryNameDate"].HeaderText = "Partenariat";
             dgvBudgets.Columns["CountryNameDate"].DisplayIndex = 1;
-            dgvBudgets.Columns["plafond"].HeaderText = "Plafond";
             dgvBudgets.Columns["forecastBudget"].HeaderText = "Budget initial";
             dgvBudgets.Columns["realBudget"].HeaderText = "Budget réel";
 

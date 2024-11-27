@@ -10,20 +10,12 @@
 namespace ProGestionGSB.DAL
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Partnership
+    public partial class sp_users_getByLogin1_Result
     {
         public int id { get; set; }
-        public System.DateTime date { get; set; }
-        public Nullable<double> forecastBudget { get; set; }
-        public Nullable<double> realBudget { get; set; }
-        public int action_id { get; set; }
-        public int association_id { get; set; }
-        public int country_id { get; set; }
-    
-        public virtual Action Action { get; set; }
-        public virtual Association Association { get; set; }
-        public virtual Country Country { get; set; }
+        public string login { get; set; }
+        public string password { get; set; }
+        public int role_id { get; set; }
     }
 }

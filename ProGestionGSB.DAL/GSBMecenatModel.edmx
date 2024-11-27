@@ -29,6 +29,7 @@
           </Key>
           <Property Name="country_id" Type="int" Nullable="false" />
           <Property Name="choosenYear" Type="int" Nullable="false" />
+          <Property Name="plafond" Type="float" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -60,7 +61,6 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="date" Type="date" Nullable="false" />
-          <Property Name="plafond" Type="float" />
           <Property Name="forecastBudget" Type="float" />
           <Property Name="realBudget" Type="float" />
           <Property Name="action_id" Type="int" Nullable="false" />
@@ -217,9 +217,11 @@
           <Parameter Name="choosenYear" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_choosenCountryYears_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="country_id" Type="int" Mode="In" />
+          <Parameter Name="oldcountry_id" Type="int" Mode="In" />
+          <Parameter Name="newcountry_id" Type="int" Mode="In" />
           <Parameter Name="oldChoosenYear" Type="int" Mode="In" />
           <Parameter Name="newChoosenYear" Type="int" Mode="In" />
+          <Parameter Name="plafond" Type="float" Mode="In" />
         </Function>
         <Function Name="sp_country_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="name" Type="varchar" Mode="In" />
@@ -305,10 +307,6 @@
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="forecastBudget" Type="float" Mode="In" />
         </Function>
-        <Function Name="sp_partnerships_updatePlafond" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id" Type="int" Mode="In" />
-          <Parameter Name="plafond" Type="float" Mode="In" />
-        </Function>
         <Function Name="sp_partnerships_updateRealBudget" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
           <Parameter Name="realBudget" Type="float" Mode="In" />
@@ -338,6 +336,9 @@
         <Function Name="sp_users_getAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_users_getById" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_users_getByLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="login" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_users_update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id" Type="int" Mode="In" />
@@ -417,6 +418,7 @@
           <Property Name="country_id" Type="Int32" Nullable="false" />
           <Property Name="choosenYear" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Country" Relationship="Self.FK__ChoosenCo__count__3B75D760" FromRole="ChoosenCountryYears" ToRole="Country" />
+          <Property Name="plafond" Type="Double" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -452,7 +454,6 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="plafond" Type="Double" />
           <Property Name="forecastBudget" Type="Double" />
           <Property Name="realBudget" Type="Double" />
           <Property Name="action_id" Type="Int32" Nullable="false" />
@@ -652,9 +653,11 @@
           <Parameter Name="choosenYear" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_choosenCountryYears_update">
-            <Parameter Name="country_id" Mode="In" Type="Int32" />
+            <Parameter Name="oldcountry_id" Mode="In" Type="Int32" />
+            <Parameter Name="newcountry_id" Mode="In" Type="Int32" />
             <Parameter Name="oldChoosenYear" Mode="In" Type="Int32" />
             <Parameter Name="newChoosenYear" Mode="In" Type="Int32" />
+            <Parameter Name="plafond" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_country_add">
             <Parameter Name="name" Mode="In" Type="String" />
@@ -782,6 +785,9 @@
             <Parameter Name="login" Mode="In" Type="String" />
             <Parameter Name="password" Mode="In" Type="String" />
             <Parameter Name="role_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_users_getByLogin1" ReturnType="Collection(GSBMecenatModel.sp_users_getByLogin1_Result)">
+          <Parameter Name="login" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_actions_getAll_Result">
@@ -952,6 +958,12 @@
           <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
           <Property Type="String" Name="libel" Nullable="false" MaxLength="60" />
         </ComplexType>
+        <ComplexType Name="sp_users_getByLogin1_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="40" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="120" />
+          <Property Type="Int32" Name="role_id" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -980,6 +992,7 @@
           <EntitySetMapping Name="ChoosenCountryYears">
             <EntityTypeMapping TypeName="GSBMecenatModel.ChoosenCountryYear">
               <MappingFragment StoreEntitySet="ChoosenCountryYears">
+                <ScalarProperty Name="plafond" ColumnName="plafond" />
                 <ScalarProperty Name="country_id" ColumnName="country_id" />
                 <ScalarProperty Name="choosenYear" ColumnName="choosenYear" />
               </MappingFragment>
@@ -1017,7 +1030,6 @@
               <MappingFragment StoreEntitySet="Partnerships">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="plafond" ColumnName="plafond" />
                 <ScalarProperty Name="forecastBudget" ColumnName="forecastBudget" />
                 <ScalarProperty Name="realBudget" ColumnName="realBudget" />
                 <ScalarProperty Name="action_id" ColumnName="action_id" />
@@ -1299,7 +1311,6 @@
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_partnerships_update" FunctionName="GSBMecenatModel.Store.sp_partnerships_update" />
           <FunctionImportMapping FunctionImportName="sp_partnerships_updateForecastBudget" FunctionName="GSBMecenatModel.Store.sp_partnerships_updateForecastBudget" />
-          <FunctionImportMapping FunctionImportName="sp_partnerships_updatePlafond" FunctionName="GSBMecenatModel.Store.sp_partnerships_updatePlafond" />
           <FunctionImportMapping FunctionImportName="sp_partnerships_updateRealBudget" FunctionName="GSBMecenatModel.Store.sp_partnerships_updateRealBudget" />
           <FunctionImportMapping FunctionImportName="sp_role_add" FunctionName="GSBMecenatModel.Store.sp_role_add" />
           <FunctionImportMapping FunctionImportName="sp_role_delete" FunctionName="GSBMecenatModel.Store.sp_role_delete" />
@@ -1343,6 +1354,16 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="sp_users_update" FunctionName="GSBMecenatModel.Store.sp_users_update" />
+          <FunctionImportMapping FunctionImportName="sp_users_getByLogin1" FunctionName="GSBMecenatModel.Store.sp_users_getByLogin">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="GSBMecenatModel.sp_users_getByLogin1_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

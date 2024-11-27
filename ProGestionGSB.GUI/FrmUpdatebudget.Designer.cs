@@ -34,8 +34,6 @@
             this.txtRealBudget = new System.Windows.Forms.TextBox();
             this.lblForecastBudget = new System.Windows.Forms.Label();
             this.txtForecastBudget = new System.Windows.Forms.TextBox();
-            this.lblPlafond = new System.Windows.Forms.Label();
-            this.txtPlafond = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
@@ -57,8 +55,6 @@
             this.gbForm.Controls.Add(this.txtRealBudget);
             this.gbForm.Controls.Add(this.lblForecastBudget);
             this.gbForm.Controls.Add(this.txtForecastBudget);
-            this.gbForm.Controls.Add(this.lblPlafond);
-            this.gbForm.Controls.Add(this.txtPlafond);
             this.gbForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbForm.Location = new System.Drawing.Point(56, 107);
             this.gbForm.Name = "gbForm";
@@ -71,7 +67,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(278, 50);
+            this.label1.Location = new System.Drawing.Point(15, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 20);
             this.label1.TabIndex = 11;
@@ -81,10 +77,10 @@
             // 
             this.txtRealBudget.BackColor = System.Drawing.Color.White;
             this.txtRealBudget.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRealBudget.Location = new System.Drawing.Point(282, 73);
+            this.txtRealBudget.Location = new System.Drawing.Point(19, 59);
             this.txtRealBudget.MinimumSize = new System.Drawing.Size(200, 28);
             this.txtRealBudget.Name = "txtRealBudget";
-            this.txtRealBudget.Size = new System.Drawing.Size(200, 26);
+            this.txtRealBudget.Size = new System.Drawing.Size(200, 28);
             this.txtRealBudget.TabIndex = 10;
             // 
             // lblForecastBudget
@@ -106,26 +102,6 @@
             this.txtForecastBudget.Name = "txtForecastBudget";
             this.txtForecastBudget.Size = new System.Drawing.Size(200, 26);
             this.txtForecastBudget.TabIndex = 8;
-            // 
-            // lblPlafond
-            // 
-            this.lblPlafond.AutoSize = true;
-            this.lblPlafond.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlafond.Location = new System.Drawing.Point(15, 50);
-            this.lblPlafond.Name = "lblPlafond";
-            this.lblPlafond.Size = new System.Drawing.Size(63, 20);
-            this.lblPlafond.TabIndex = 7;
-            this.lblPlafond.Text = "Plafond";
-            // 
-            // txtPlafond
-            // 
-            this.txtPlafond.BackColor = System.Drawing.Color.White;
-            this.txtPlafond.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlafond.Location = new System.Drawing.Point(19, 73);
-            this.txtPlafond.MinimumSize = new System.Drawing.Size(200, 28);
-            this.txtPlafond.Name = "txtPlafond";
-            this.txtPlafond.Size = new System.Drawing.Size(200, 26);
-            this.txtPlafond.TabIndex = 6;
             // 
             // btnClose
             // 
@@ -184,8 +160,6 @@
         private System.Windows.Forms.GroupBox gbForm;
         private System.Windows.Forms.Label lblForecastBudget;
         private System.Windows.Forms.TextBox txtForecastBudget;
-        private System.Windows.Forms.Label lblPlafond;
-        private System.Windows.Forms.TextBox txtPlafond;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblTitle;

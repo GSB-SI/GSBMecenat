@@ -109,11 +109,11 @@
 
 3. **`sp_choosenCountryYears_add`**  
    - **Rôle :** Ajoute une nouvelle entrée dans `ChoosenCountryYears` pour un pays et une année donnés.
-   - **Paramètres :** `@country_id` (id du pays), `@choosenYear` (année choisie).
+   - **Paramètres :** `@country_id` (id du pays), `@choosenYear` (année choisie), `@plafond` (plafond choisi).
 
 4. **`sp_choosenCountryYears_update`**  
    - **Rôle :** Met à jour l'année choisie pour un pays existant.
-   - **Paramètres :** `@country_id` (id du pays), `@oldChoosenYear` (ancienne année), `@newChoosenYear` (nouvelle année).
+   - **Paramètres :** `@country_id` (id du pays), `@oldChoosenYear` (ancienne année), `@newChoosenYear` (nouvelle année), `@plafond` (plafond choisi).
 
 5. **`sp_choosenCountryYears_delete`**  
    - **Rôle :** Supprime une entrée de `ChoosenCountryYears` pour un pays et une année donnés.
@@ -198,23 +198,19 @@
    - **Rôle :** Ajoute un nouveau partenariat dans la table `Partnerships`.
    - **Paramètres :** `@action_id` (id de l'action), `@association_id` (id de l'association), `@country_id` (id du pays).
 
-7. **`sp_partnerships_updatePlafond`**  
-   - **Rôle :** Met à jour le plafond d'un partenariat existant.
-   - **Paramètres :** `@id` (id du partenariat), `@plafond` (nouveau plafond).
-
-8. **`sp_partnerships_updateForecastBudget`**  
+7. **`sp_partnerships_updateForecastBudget`**  
    - **Rôle :** Met à jour le budget prévisionnel d'un partenariat.
    - **Paramètres :** `@id` (id du partenariat), `@forecastBudget` (nouveau budget prévisionnel).
 
-9. **`sp_partnerships_updateRealBudget`**  
+8. **`sp_partnerships_updateRealBudget`**  
    - **Rôle :** Met à jour le budget réel d'un partenariat.
    - **Paramètres :** `@id` (id du partenariat), `@realBudget` (nouveau budget réel).
 
-10. **`sp_partnerships_update`**  
+9. **`sp_partnerships_update`**  
     - **Rôle :** Met à jour les informations générales d'un partenariat.
     - **Paramètres :** `@id` (id du partenariat), `@action_id` (id de l'action), `@association_id` (id de l'association), `@country_id` (id du pays).
 
-11. **`sp_partnerships_delete`**  
+10. **`sp_partnerships_delete`**  
     - **Rôle :** Supprime un partenariat de la table `Partnerships`.
     - **Paramètre :** `@id` (identifiant du partenariat).
 

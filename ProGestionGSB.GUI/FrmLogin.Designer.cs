@@ -124,7 +124,7 @@
             this.Controls.Add(this.txtLogin);
             this.Controls.Add(this.lblTitle);
             this.Name = "FrmLogin";
-            this.Text = "FrmLogin";
+            this.Text = "Authentification";
             this.ResumeLayout(false);
             this.PerformLayout();
 

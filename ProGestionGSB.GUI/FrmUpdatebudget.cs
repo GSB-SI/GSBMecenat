@@ -25,7 +25,7 @@ namespace ProGestionGSB.GUI
             }
             if (utilisateurAuthentifie.Role.libel != "Directeur du service Partenariat et Communication")
             {
-                txtRealBudget.Enabled = false;
+                txtPlafond.Enabled = false;
             }
         }
 

@@ -19,6 +19,7 @@ CREATE TABLE Country(
 CREATE TABLE ChoosenCountryYears(
 	country_id INT NOT NULL REFERENCES Country(id),
 	choosenYear INT NOT NULL,
+	plafond FLOAT,
 	PRIMARY KEY (country_id, choosenYear),
 	);
 
@@ -38,7 +39,6 @@ CREATE TABLE Associations(
 CREATE TABLE Partnerships(
 	id INT IDENTITY PRIMARY KEY,
 	date DATE NOT NULL,
-	plafond FLOAT,
 	forecastBudget FLOAT,
 	realBudget FLOAT,
 	action_id INT NOT NULL REFERENCES Actions(id),

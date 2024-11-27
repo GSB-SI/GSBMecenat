@@ -46,6 +46,7 @@ namespace ProGestionGSB.GUI
                 {
                     this.User = user;
                     this.Close();
+
                 }
                 else
                 {

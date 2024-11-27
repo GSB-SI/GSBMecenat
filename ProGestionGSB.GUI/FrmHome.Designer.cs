@@ -57,6 +57,7 @@
             this.btnManageUsers.TabIndex = 1;
             this.btnManageUsers.Text = "Gestion des utilisateurs";
             this.btnManageUsers.UseVisualStyleBackColor = true;
+            this.btnManageUsers.Click += new System.EventHandler(this.btnManageUsers_Click);
             // 
             // btnManageAssociations
             // 
@@ -89,6 +90,7 @@
             this.btnManagePlafonds.TabIndex = 4;
             this.btnManagePlafonds.Text = "Gestion des plafonds de mécénat";
             this.btnManagePlafonds.UseVisualStyleBackColor = true;
+            this.btnManagePlafonds.Click += new System.EventHandler(this.btnManagePlafonds_Click);
             // 
             // btnShowActionsByAssociation
             // 

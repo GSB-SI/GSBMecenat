@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
@@ -43,6 +36,18 @@ namespace ProGestionGSB.GUI
         private void btnShowIndicators_Click(object sender, EventArgs e)
         {
             FrmIndicator frm = new FrmIndicator();
+            frm.ShowDialog();
+        }
+
+        private void btnManagePlafonds_Click(object sender, EventArgs e)
+        {
+            FrmUpdatebudget frm = new FrmUpdatebudget();
+            frm.ShowDialog();
+        }
+
+        private void btnManageUsers_Click(object sender, EventArgs e)
+        {
+            FrmUsers frm = new FrmUsers();
             frm.ShowDialog();
         }
     }

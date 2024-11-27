@@ -176,17 +176,17 @@ begin
 end
 go
 
-create procedure sp_choosenCountryYears_add(@country_id int, @choosenYear int)
+create procedure sp_choosenCountryYears_add(@country_id int, @choosenYear int,@plafond float)
 as
 begin
-	insert into ChoosenCountryYears values(@country_id,@choosenYear)
+	insert into ChoosenCountryYears values(@country_id,@choosenYear,@plafond)
 end
 go
 
-create procedure sp_choosenCountryYears_update(@country_id int,  @oldChoosenYear int, @newChoosenYear int)
+create procedure sp_choosenCountryYears_update(@oldcountry_id int,@newcountry_id int,  @oldChoosenYear int, @newChoosenYear int, @plafond float)
 as
 begin
-	update ChoosenCountryYears set choosenYear=@newChoosenYear where country_id=@country_id and choosenYear=@oldChoosenYear
+	update ChoosenCountryYears set choosenYear=@newChoosenYear,country_id=@newcountry_id, plafond=@plafond where country_id=@oldcountry_id and choosenYear=@oldChoosenYear
 end
 go
 
@@ -322,12 +322,6 @@ begin
 end
 go
 
-create procedure sp_partnerships_updatePlafond(@id int,@plafond float)
-as
-begin
-	update Partnerships set  plafond=@plafond where id=@id
-end
-go
 
 create procedure sp_partnerships_updateForecastBudget(@id int,@forecastBudget float)
 as

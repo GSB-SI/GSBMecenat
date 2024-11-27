@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0bec42eed0644a04bce4c501467ab319" Name="Diagram1">
+      <Diagram DiagramId="f994d4ed28964a6e9129ceaec71274ab" Name="Diagram1">
         <EntityTypeShape EntityType="GSBMecenatModel.Action" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="GSBMecenatModel.Association" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="GSBMecenatModel.ChoosenCountryYear" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />

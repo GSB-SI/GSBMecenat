@@ -22,7 +22,7 @@ namespace ProGestionGSB.BLL
             return UserDAO.GetInstance().GetUsers();
         }
 
-        public sp_users_getbyId_Result GetUserById(int id)
+        public sp_users_getById_Result GetUserById(int id)
         {
             return UserDAO.GetInstance().GetUserById(id);
         }

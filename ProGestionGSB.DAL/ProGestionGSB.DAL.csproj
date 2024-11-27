@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -92,10 +92,10 @@
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MissionDAO.cs" />
+    <Compile Include="BudgetDAO.cs" />
     <Compile Include="Partnership.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BudgetDAO.cs" />
     <Compile Include="PartnershipDAO.cs" />
     <Compile Include="PartnershipExt.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -103,6 +103,8 @@
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleDAO.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="sp_actions_getAll_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
@@ -154,7 +156,7 @@
     <Compile Include="sp_nbAssociationByCountry_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_nbPartnershipsByActionByYear_Result1.cs">
+    <Compile Include="sp_nbPartnershipsByActionByYear_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_partnerships_getAll_Result.cs">
@@ -181,10 +183,7 @@
     <Compile Include="sp_users_getAll_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="sp_users_getById1_Result.cs">
-      <DependentUpon>GSBMecenatModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sp_users_getbyId_Result.cs">
+    <Compile Include="sp_users_getById_Result.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="sp_users_getByLogin_Result.cs">
@@ -193,9 +192,10 @@
     <Compile Include="User.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="UserDAO.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UserDAO.cs" />
+    <None Include="App.Config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
@@ -203,9 +203,6 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GSBMecenatModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
     <None Include="GSBMecenatModel.edmx.diagram">
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
     </None>
@@ -215,21 +212,19 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="GSBMecenatModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>GSBMecenatModel.Context.cs</LastGenOutput>
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
+      <LastGenOutput>GSBMecenatModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="GSBMecenatModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>GSBMecenatModel.edmx</DependentUpon>
       <LastGenOutput>GSBMecenatModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

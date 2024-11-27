@@ -35,13 +35,13 @@ namespace ProGestionGSB.DAL
             }
         }
 
-        public sp_users_getbyId_Result GetUserById(int id)
+        public sp_users_getById_Result GetUserById(int id)
         {
             try
             {
                 using (GSBMecenatEntities ctx = new GSBMecenatEntities())
                 {
-                    var result = ctx.sp_users_getbyId(id).FirstOrDefault();
+                    var result = ctx.sp_users_getById(id).FirstOrDefault();
                     return result ?? throw new Exception("User not found.");
                 }
             }

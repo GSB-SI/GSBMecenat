@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Data;
 
 namespace ProGestionGSB.DAL
 {
@@ -28,9 +23,9 @@ namespace ProGestionGSB.DAL
                 DataTable table = new DataTable();
                 table.Columns.Add("Pays");
                 table.Columns.Add("Nombre d'association");
-                foreach(sp_nbAssociationByCountry_Result a in ctx.sp_nbAssociationByCountry())
+                foreach (sp_nbAssociationByCountry_Result a in ctx.sp_nbAssociationByCountry())
                 {
-                    table.Rows.Add(a.name,a.Number);
+                    table.Rows.Add(a.name, a.Number);
                 }
 
                 return table;
@@ -44,9 +39,9 @@ namespace ProGestionGSB.DAL
                 table.Columns.Add("Action");
                 table.Columns.Add("Année");
                 table.Columns.Add("Nombre de partenariat");
-                foreach (sp_nbPartnershipsByActionByYear_Result1 result in ctx.sp_nbPartnershipsByActionByYear())
+                foreach (sp_nbPartnershipsByActionByYear_Result result in ctx.sp_nbPartnershipsByActionByYear())
                 {
-                    table.Rows.Add(result.libel, result.year,result.nbPartnerships);
+                    table.Rows.Add(result.libel, result.year, result.nbPartnerships);
                 }
 
                 return table;

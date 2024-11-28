@@ -44,7 +44,7 @@ namespace ProGestionGSB.GUI
 
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
-            FrmUpdatebudget target = new FrmUpdatebudget(utilisateurAuthentifie);
+            FrmUpdateBudget target = new FrmUpdateBudget(utilisateurAuthentifie);
             target.ShowDialog();
             dgvBudgets.DataSource = PartnershipManager.GetInstance().GetPartnerships();
         }

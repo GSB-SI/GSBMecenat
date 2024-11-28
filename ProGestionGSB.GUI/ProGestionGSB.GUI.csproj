@@ -64,6 +64,12 @@
     <Compile Include="FrmAddAssociation.Designer.cs">
       <DependentUpon>FrmAddAssociation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmAddChoosenCountryYears.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAddPartnership.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,11 +82,23 @@
     <Compile Include="FrmAssociations.Designer.cs">
       <DependentUpon>FrmAssociations.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmChoosenCountryYears.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDeleteAssociation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmDeleteAssociation.Designer.cs">
       <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeleteChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmDeleteChoosenCountryYears.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDeletePartnership.cs">
       <SubType>Form</SubType>
@@ -118,6 +136,12 @@
     <Compile Include="FrmUpdateAssociation.Designer.cs">
       <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUpdateChoosenCountryYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateChoosenCountryYear.Designer.cs">
+      <DependentUpon>FrmUpdateChoosenCountryYear.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUpdatePartnership.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,14 +152,23 @@
     <EmbeddedResource Include="FrmAddAssociation.resx">
       <DependentUpon>FrmAddAssociation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddChoosenCountryYears.resx">
+      <DependentUpon>FrmAddChoosenCountryYears.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAddPartnership.resx">
       <DependentUpon>FrmAddPartnership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAssociations.resx">
       <DependentUpon>FrmAssociations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChoosenCountryYears.resx">
+      <DependentUpon>FrmChoosenCountryYears.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDeleteAssociation.resx">
       <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteChoosenCountryYears.resx">
+      <DependentUpon>FrmDeleteChoosenCountryYears.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDeletePartnership.resx">
       <DependentUpon>FrmDeletePartnership.cs</DependentUpon>
@@ -154,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdateAssociation.resx">
       <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateChoosenCountryYear.resx">
+      <DependentUpon>FrmUpdateChoosenCountryYear.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdatePartnership.resx">
       <DependentUpon>FrmUpdatePartnership.cs</DependentUpon>
@@ -176,11 +212,11 @@
     <Compile Include="FrmDeleteUser.Designer.cs">
       <DependentUpon>FrmDeleteUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmUpdatebudget.cs">
+    <Compile Include="FrmUpdateBudget.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmUpdatebudget.Designer.cs">
-      <DependentUpon>FrmUpdatebudget.cs</DependentUpon>
+    <Compile Include="FrmUpdateBudget.Designer.cs">
+      <DependentUpon>FrmUpdateBudget.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
@@ -210,8 +246,8 @@
     <EmbeddedResource Include="FrmDeleteUser.resx">
       <DependentUpon>FrmDeleteUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmUpdatebudget.resx">
-      <DependentUpon>FrmUpdatebudget.cs</DependentUpon>
+    <EmbeddedResource Include="FrmUpdateBudget.resx">
+      <DependentUpon>FrmUpdateBudget.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

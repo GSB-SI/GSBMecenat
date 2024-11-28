@@ -1,6 +1,6 @@
 ﻿namespace ProGestionGSB.GUI
 {
-    partial class FrmUpdatebudget
+    partial class FrmUpdateBudget
     {
         /// <summary>
         /// Required designer variable.

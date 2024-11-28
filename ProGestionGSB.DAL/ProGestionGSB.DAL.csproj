@@ -65,6 +65,8 @@
     <Compile Include="ChoosenCountryYear.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ChoosenCountryYearsDAO.cs" />
+    <Compile Include="ChoosenCountryYearsExt.cs" />
     <Compile Include="Country.cs">
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>

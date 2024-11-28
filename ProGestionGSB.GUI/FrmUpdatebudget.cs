@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
 {
-    public partial class FrmUpdatebudget : Form
+    public partial class FrmUpdateBudget : Form
     {
 
         private User utilisateurAuthentifie;
-        public FrmUpdatebudget(User user)
+        public FrmUpdateBudget(User user)
         {
             InitializeComponent();
             utilisateurAuthentifie = user;

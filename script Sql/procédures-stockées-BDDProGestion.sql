@@ -102,20 +102,22 @@ begin
 end
 go
 
-create procedure sp_users_add( @login varchar(40),@password varchar(40),@role_id int)
+create procedure sp_users_add( @login varchar(40),@password varchar(120),@role_id int)
 as
 begin
 	insert into Users(login,password,role_id) values (@login,@password,@role_id)
 end
 go
-
-create procedure sp_users_update(@id int, @login varchar(40),@password varchar(40),@role_id int)
+drop procedure sp_users_add
+go
+create procedure sp_users_update(@id int, @login varchar(40),@password varchar(120),@role_id int)
 as
 begin
 	update Users set login = @login , password = @password , role_id = @role_id where id = @id
 end
 go
-
+drop procedure sp_users_update 
+go
 create procedure sp_users_delete(@id int)
 as
 begin
@@ -152,7 +154,6 @@ begin
 	update associations set name=@name,responsable=@responsable, mission_id=@mission_id, country_id=@country_id where id=@id
 end
 go
-
 
 create procedure sp_associations_delete(@id int)
 as
@@ -322,7 +323,6 @@ begin
 end
 go
 
-
 create procedure sp_partnerships_updateForecastBudget(@id int,@forecastBudget float)
 as
 begin
@@ -410,7 +410,6 @@ begin
 	group by libel,ChoosenCountryYears.choosenYear
 end
 go
-drop procedure sp_nbPartnershipsByActionByYear
 
 create procedure sp_ActionsByAssociation(@idAssociation int)
 as
@@ -421,5 +420,3 @@ begin
 	where association_id=@idAssociation ;
 end
 go
-
-drop procedure sp_ActionsByAssociation

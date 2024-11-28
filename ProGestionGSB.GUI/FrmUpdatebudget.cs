@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
 {
-    public partial class FrmUpdateBudget : Form
+    public partial class FrmUpdatebudget : Form
     {
 
         private User utilisateurAuthentifie;
-        public FrmUpdateBudget(User user)
+        public FrmUpdatebudget(User user)
         {
             InitializeComponent();
             utilisateurAuthentifie = user;
@@ -23,6 +23,10 @@ namespace ProGestionGSB.GUI
             {
                 txtRealBudget.Enabled = false;
             }
+            //if (utilisateurAuthentifie.Role.libel != "Directeur du service Partenariat et Communication")
+            //{
+            //    txtPlafond.Enabled = false;
+            //}
         }
 
         private void cboPartnerships_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -40,7 +44,7 @@ namespace ProGestionGSB.GUI
             float? realBudget = null;
             if (cboPartnerships.SelectedIndex == -1)
             {
-                erreurs += "Veuillez sélectionner une association pour modifier\n";
+                erreurs += "Veuillez sélectionner un partenariat pour modifier\n";
             }
             if (erreurs != "")
             {
@@ -64,6 +68,8 @@ namespace ProGestionGSB.GUI
                 MessageBox.Show("Budget modifié", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cboPartnerships.DataSource = PartnershipManager.GetInstance().GetPartnerships();
                 cboPartnerships.SelectedIndex = -1;
+                txtForecastBudget.Text = "";
+                txtRealBudget.Text = "";
 
 
             }

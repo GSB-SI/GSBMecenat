@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
 {
-    public partial class FrmUpdatebudget : Form
+    public partial class FrmUpdateBudget : Form
     {
 
         private User utilisateurAuthentifie;
-        public FrmUpdatebudget(User user)
+        public FrmUpdateBudget(User user)
         {
             InitializeComponent();
             utilisateurAuthentifie = user;
@@ -22,10 +22,6 @@ namespace ProGestionGSB.GUI
             if (utilisateurAuthentifie.Role.libel != "Directeur du service Financier")
             {
                 txtRealBudget.Enabled = false;
-            }
-            if (utilisateurAuthentifie.Role.libel != "Directeur du service Partenariat et Communication")
-            {
-                txtPlafond.Enabled = false;
             }
         }
 

@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="ActionManager.cs" />
     <Compile Include="AssociationManager.cs" />
+    <Compile Include="ChoosenCountryYearsManager.cs" />
     <Compile Include="CountryManager.cs" />
     <Compile Include="IndicatorManager.cs" />
     <Compile Include="BudgetManager.cs" />

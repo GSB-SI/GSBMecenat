@@ -1,13 +1,17 @@
 ﻿using ProGestionGSB.BLL;
+using ProGestionGSB.DAL;
 using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
 {
     public partial class FrmChoosenCountryYears : Form
     {
-        public FrmChoosenCountryYears()
+
+        private User utilisateurAuthentifie;
+        public FrmChoosenCountryYears(User user)
         {
             InitializeComponent();
+            utilisateurAuthentifie = user;
 
             dgvChoosenCountryYears.DataSource = ChoosenCountryYearsManager.GetInstance().GetAll();
 
@@ -25,6 +29,13 @@ namespace ProGestionGSB.GUI
 
             dgvChoosenCountryYears.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvChoosenCountryYears.RowHeadersVisible = false;
+
+            if (utilisateurAuthentifie.Role.libel != "Directeur du service Partenariat et Communication")
+            {
+                btnAdd.Enabled = false;
+                btnUpdate.Enabled = false;
+                btnDelete.Enabled = false;
+            }
         }
 
         private void btnAdd_Click(object sender, System.EventArgs e)

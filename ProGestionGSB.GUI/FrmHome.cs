@@ -45,7 +45,7 @@ namespace ProGestionGSB.GUI
 
         private void btnManagePlafonds_Click(object sender, EventArgs e)
         {
-            FrmUpdateBudget frm = new FrmUpdateBudget(utilisateurAuthentifie);
+            FrmBudgets frm = new FrmBudgets(utilisateurAuthentifie);
             frm.ShowDialog();
         }
 
@@ -90,11 +90,12 @@ namespace ProGestionGSB.GUI
             btnShowActionsByAssociation.Enabled = true;
             btnShowIndicators.Enabled = true;
             btnManagePlafonds.Enabled = true;
+            btnChoosenCountryYears.Enabled = true;
         }
 
         private void btnChoosenCountryYears_Click(object sender, EventArgs e)
         {
-            FrmChoosenCountryYears target = new FrmChoosenCountryYears();
+            FrmChoosenCountryYears target = new FrmChoosenCountryYears(utilisateurAuthentifie);
             target.ShowDialog();
         }
     }

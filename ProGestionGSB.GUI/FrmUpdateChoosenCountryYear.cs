@@ -51,7 +51,7 @@ namespace ProGestionGSB.GUI
                 int year = Convert.ToInt32(txtYear.Text.ToString());
                 double plafond = Convert.ToInt32(txtPlafond.Text.ToString());
                 int pays_id = Convert.ToInt32(cboCountry.SelectedValue.ToString());
-                ChoosenCountryYearsManager.GetInstance().UpdateChoosenCountryYear(oldContrat.country_id, oldContrat.country_id, pays_id, year, plafond);
+                ChoosenCountryYearsManager.GetInstance().UpdateChoosenCountryYear(oldContrat.country_id, pays_id, oldContrat.choosenYear, year, plafond);
                 MessageBox.Show("Contrat modifié", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 txtPlafond.Text = "";

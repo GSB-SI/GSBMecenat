@@ -110,14 +110,21 @@ end
 go
 drop procedure sp_users_add
 go
-create procedure sp_users_update(@id int, @login varchar(40),@password varchar(120),@role_id int)
+create procedure sp_users_update(@id int, @login varchar(40),@role_id int)
 as
 begin
-	update Users set login = @login , password = @password , role_id = @role_id where id = @id
+	update Users set login = @login , role_id = @role_id where id = @id
 end
 go
 drop procedure sp_users_update 
 go
+create procedure sp_users_resetPassword(@id int,@password varchar(120))
+as
+begin
+	update Users set password = @password where id = @id
+end
+go
+
 create procedure sp_users_delete(@id int)
 as
 begin

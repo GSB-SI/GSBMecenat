@@ -67,13 +67,13 @@ namespace ProGestionGSB.DAL
             }
         }
 
-        public void UpdateUser(int id, string login, string password, int role_id)
+        public void UpdateUser(int id, string login, int role_id)
         {
             try
             {
                 using (GSBMecenatEntities ctx = new GSBMecenatEntities())
                 {
-                    ctx.sp_users_update(id, login, password, role_id);
+                    ctx.sp_users_update(id, login, role_id);
                 }
             }
             catch (Exception ex)
@@ -113,6 +113,22 @@ namespace ProGestionGSB.DAL
             catch (Exception ex)
             {
                 throw new Exception("An error occurred while retrieving the user.", ex);
+            }
+        }
+
+        public void resetPassword(int id, string password)
+        {
+            try
+            {
+                using (GSBMecenatEntities ctx = new GSBMecenatEntities())
+                {
+                    ctx.sp_users_resetPassword(id, password);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("An error occurred while deleting the user.", ex);
+
             }
         }
     }

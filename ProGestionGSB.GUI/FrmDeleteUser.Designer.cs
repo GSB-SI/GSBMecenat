@@ -49,7 +49,7 @@
             this.cboUsers.Name = "cboUsers";
             this.cboUsers.Size = new System.Drawing.Size(177, 21);
             this.cboUsers.TabIndex = 17;
-            this.cboUsers.SelectionChangeCommitted += new System.EventHandler(this.cboUsers_SelectedIndexChanged);
+            this.cboUsers.SelectionChangeCommitted += new System.EventHandler(this.cboUsers_SelectionChangeCommitted);
             // 
             // gbForm
             // 
@@ -70,6 +70,7 @@
             // cboRoles
             // 
             this.cboRoles.Enabled = false;
+            this.cboRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboRoles.FormattingEnabled = true;
             this.cboRoles.Location = new System.Drawing.Point(250, 73);
             this.cboRoles.Name = "cboRoles";

@@ -33,7 +33,6 @@ namespace ProGestionGSB.GUI
         {
             Partnership partnership = (Partnership)cboPartnerships.SelectedItem;
 
-            txtPlafond.Text = Convert.ToString(partnership.plafond);
             txtForecastBudget.Text = Convert.ToString(partnership.forecastBudget);
             txtRealBudget.Text = Convert.ToString(partnership.realBudget);
         }
@@ -41,7 +40,6 @@ namespace ProGestionGSB.GUI
         private void btnUpdate_Click(object sender, System.EventArgs e)
         {
             string erreurs = "";
-            float? plafond = null;
             float? forecastBudget = null;
             float? realBudget = null;
             if (cboPartnerships.SelectedIndex == -1)
@@ -54,10 +52,6 @@ namespace ProGestionGSB.GUI
             }
             else
             {
-                if (!string.IsNullOrEmpty(txtPlafond.Text))
-                {
-                    plafond = Convert.ToSingle(txtPlafond.Text);
-                }
 
                 if (!string.IsNullOrEmpty(txtForecastBudget.Text))
                 {
@@ -70,7 +64,7 @@ namespace ProGestionGSB.GUI
                 }
 
                 int partnership_id = Convert.ToInt32(cboPartnerships.SelectedValue.ToString());
-                BudgetManager.GetInstance().UpdateAllPlafonds(partnership_id, plafond, forecastBudget, realBudget);
+                BudgetManager.GetInstance().UpdateAllPlafonds(partnership_id, forecastBudget, realBudget);
                 MessageBox.Show("Budget modifié", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 cboPartnerships.DataSource = PartnershipManager.GetInstance().GetPartnerships();
                 cboPartnerships.SelectedIndex = -1;

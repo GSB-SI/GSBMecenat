@@ -17,13 +17,12 @@ namespace ProGestionGSB.DAL
         }
         #endregion
 
-        public void UpdateAllBudgets(int id, float? plafond, float? forecastBudget, float? realBudget)
+        public void UpdateAllBudgets(int id, float? forecastBudget, float? realBudget)
         {
             try
             {
                 using (GSBMecenatEntities ctx = new GSBMecenatEntities())
                 {
-                    ctx.sp_partnerships_updatePlafond(id, plafond);
                     ctx.sp_partnerships_updateForecastBudget(id, forecastBudget);
                     ctx.sp_partnerships_updateRealBudget(id, realBudget);
                 }

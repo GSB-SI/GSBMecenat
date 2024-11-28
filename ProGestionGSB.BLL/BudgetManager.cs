@@ -17,9 +17,9 @@ namespace ProGestionGSB.BLL
         }
         #endregion
 
-        public void UpdateAllPlafonds(int id, float? plafond, float? forecastBudget, float? realBudget)
+        public void UpdateAllPlafonds(int id, float? forecastBudget, float? realBudget)
         {
-            BudgetDAO.GetInstance().UpdateAllBudgets(id, plafond, forecastBudget, realBudget);
+            BudgetDAO.GetInstance().UpdateAllBudgets(id, forecastBudget, realBudget);
         }
     }
 }

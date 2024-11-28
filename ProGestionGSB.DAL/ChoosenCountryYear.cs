@@ -16,6 +16,7 @@ namespace ProGestionGSB.DAL
     {
         public int country_id { get; set; }
         public int choosenYear { get; set; }
+        public Nullable<double> plafond { get; set; }
     
         public virtual Country Country { get; set; }
     }

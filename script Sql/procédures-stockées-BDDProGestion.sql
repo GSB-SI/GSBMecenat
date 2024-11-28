@@ -153,7 +153,6 @@ begin
 end
 go
 
-
 create procedure sp_associations_delete(@id int)
 as
 begin
@@ -322,7 +321,6 @@ begin
 end
 go
 
-
 create procedure sp_partnerships_updateForecastBudget(@id int,@forecastBudget float)
 as
 begin
@@ -410,7 +408,6 @@ begin
 	group by libel,ChoosenCountryYears.choosenYear
 end
 go
-drop procedure sp_nbPartnershipsByActionByYear
 
 create procedure sp_ActionsByAssociation(@idAssociation int)
 as
@@ -421,5 +418,3 @@ begin
 	where association_id=@idAssociation ;
 end
 go
-
-drop procedure sp_ActionsByAssociation

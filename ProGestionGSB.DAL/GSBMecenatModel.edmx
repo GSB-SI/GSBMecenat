@@ -207,6 +207,7 @@
         <Function Name="sp_choosenCountryYears_add" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="country_id" Type="int" Mode="In" />
           <Parameter Name="choosenYear" Type="int" Mode="In" />
+          <Parameter Name="plafond" Type="float" Mode="In" />
         </Function>
         <Function Name="sp_choosenCountryYears_delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="country_id" Type="int" Mode="In" />
@@ -643,6 +644,7 @@
           <FunctionImport Name="sp_choosenCountryYears_add">
             <Parameter Name="country_id" Mode="In" Type="Int32" />
             <Parameter Name="choosenYear" Mode="In" Type="Int32" />
+            <Parameter Name="plafond" Mode="In" Type="Double" />
           </FunctionImport>
           <FunctionImport Name="sp_choosenCountryYears_delete">
             <Parameter Name="country_id" Mode="In" Type="Int32" />

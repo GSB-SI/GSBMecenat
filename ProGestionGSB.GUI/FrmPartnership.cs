@@ -1,12 +1,5 @@
 ﻿using ProGestionGSB.BLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProGestionGSB.GUI
@@ -24,7 +17,6 @@ namespace ProGestionGSB.GUI
             dgvPartnerships.Columns["Country"].Visible = false;
             dgvPartnerships.Columns["Action"].Visible = false;
             dgvPartnerships.Columns["Association"].Visible = false;
-            dgvPartnerships.Columns["plafond"].Visible = false;
             dgvPartnerships.Columns["CountryName"].Visible = false;
             dgvPartnerships.Columns["CountryNameDate"].Visible = false;
             dgvPartnerships.Columns["forecastBudget"].HeaderText = "budget prévu";
@@ -46,7 +38,7 @@ namespace ProGestionGSB.GUI
 
         private void FrmPartnership_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -58,7 +50,7 @@ namespace ProGestionGSB.GUI
         {
             FrmAddPartnership frm = new FrmAddPartnership();
             frm.ShowDialog();
-            dgvPartnerships.DataSource = PartnershipManager.GetInstance().GetPartnerships();     
+            dgvPartnerships.DataSource = PartnershipManager.GetInstance().GetPartnerships();
         }
 
         private void brtnUpdate_Click(object sender, EventArgs e)

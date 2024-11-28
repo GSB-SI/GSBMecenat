@@ -39,6 +39,10 @@ namespace ProGestionGSB.GUI
         {
             #region Contrôle des données saisies
             string erreurs = "";
+            if (cboUsers.SelectedIndex == -1)
+            {
+                erreurs += "Un utilisateur doit être renseigné pour modifier\n";
+            }
             if (string.IsNullOrWhiteSpace(txtLogin.Text) == true)
             {
                 erreurs += "Le login de l'utilisateur doit être renseigné\n";

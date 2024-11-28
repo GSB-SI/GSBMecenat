@@ -160,7 +160,7 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_associations_update", idParameter, nameParameter, responsableParameter, mission_idParameter, country_idParameter);
         }
     
-        public virtual int sp_choosenCountryYears_add(Nullable<int> country_id, Nullable<int> choosenYear)
+        public virtual int sp_choosenCountryYears_add(Nullable<int> country_id, Nullable<int> choosenYear, Nullable<double> plafond)
         {
             var country_idParameter = country_id.HasValue ?
                 new ObjectParameter("country_id", country_id) :
@@ -170,7 +170,11 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("choosenYear", choosenYear) :
                 new ObjectParameter("choosenYear", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_add", country_idParameter, choosenYearParameter);
+            var plafondParameter = plafond.HasValue ?
+                new ObjectParameter("plafond", plafond) :
+                new ObjectParameter("plafond", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_add", country_idParameter, choosenYearParameter, plafondParameter);
         }
     
         public virtual int sp_choosenCountryYears_delete(Nullable<int> country_id, Nullable<int> choosenYear)

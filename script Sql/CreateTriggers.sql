@@ -395,3 +395,26 @@ BEGIN
 		);
 	END
 END
+
+GO
+
+CREATE TRIGGER tr_deleting_admin ON Users
+FOR DELETE
+AS
+BEGIN
+  SET NOCOUNT ON;
+  
+  DECLARE @verif INT;
+  
+  SET @verif = (SELECT COUNT(*) 
+                FROM Users
+                JOIN Role ON Users.role_id = Role.id
+                WHERE Role.libel = 'Administrateur'
+				AND Users.id NOT IN (SELECT id FROM deleted));
+ 
+  IF @verif = 0
+  BEGIN
+    RAISERROR('Impossible de supprimer le seul administrateur', 16, 1);
+    ROLLBACK TRANSACTION;
+  END
+END

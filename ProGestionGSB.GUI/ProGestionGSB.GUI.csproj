@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,14 +37,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,11 +64,29 @@
     <Compile Include="FrmAddAssociation.Designer.cs">
       <DependentUpon>FrmAddAssociation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAddChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmAddChoosenCountryYears.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAddPartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddPartnership.Designer.cs">
+      <DependentUpon>FrmAddPartnership.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAssociations.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAssociations.Designer.cs">
       <DependentUpon>FrmAssociations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmChoosenCountryYears.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDeleteAssociation.cs">
       <SubType>Form</SubType>
@@ -71,11 +94,41 @@
     <Compile Include="FrmDeleteAssociation.Designer.cs">
       <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDeleteChoosenCountryYears.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteChoosenCountryYears.Designer.cs">
+      <DependentUpon>FrmDeleteChoosenCountryYears.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeletePartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeletePartnership.Designer.cs">
+      <DependentUpon>FrmDeletePartnership.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmHome.Designer.cs">
       <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIndicator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIndicator.Designer.cs">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPartnership.Designer.cs">
+      <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmShowActionByAssociation.Designer.cs">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmUpdateAssociation.cs">
       <SubType>Form</SubType>
@@ -83,22 +136,136 @@
     <Compile Include="FrmUpdateAssociation.Designer.cs">
       <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmUpdateChoosenCountryYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateChoosenCountryYear.Designer.cs">
+      <DependentUpon>FrmUpdateChoosenCountryYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdatePartnership.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdatePartnership.Designer.cs">
+      <DependentUpon>FrmUpdatePartnership.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdatePassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdatePassword.Designer.cs">
+      <DependentUpon>FrmUpdatePassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmAddAssociation.resx">
       <DependentUpon>FrmAddAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddChoosenCountryYears.resx">
+      <DependentUpon>FrmAddChoosenCountryYears.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAddPartnership.resx">
+      <DependentUpon>FrmAddPartnership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAssociations.resx">
       <DependentUpon>FrmAssociations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmChoosenCountryYears.resx">
+      <DependentUpon>FrmChoosenCountryYears.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDeleteAssociation.resx">
       <DependentUpon>FrmDeleteAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteChoosenCountryYears.resx">
+      <DependentUpon>FrmDeleteChoosenCountryYears.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeletePartnership.resx">
+      <DependentUpon>FrmDeletePartnership.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmHome.resx">
       <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmIndicator.resx">
+      <DependentUpon>FrmIndicator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPartnership.resx">
+      <DependentUpon>FrmPartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmShowActionByAssociation.resx">
+      <DependentUpon>FrmShowActionByAssociation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUpdateAssociation.resx">
       <DependentUpon>FrmUpdateAssociation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateChoosenCountryYear.resx">
+      <DependentUpon>FrmUpdateChoosenCountryYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdatePartnership.resx">
+      <DependentUpon>FrmUpdatePartnership.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="FrmAddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAddUser.Designer.cs">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBudgets.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBudgets.Designer.cs">
+      <DependentUpon>FrmBudgets.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDeleteUser.Designer.cs">
+      <DependentUpon>FrmDeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateBudget.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateBudget.Designer.cs">
+      <DependentUpon>FrmUpdateBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUpdateUser.Designer.cs">
+      <DependentUpon>FrmUpdateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmUsers.Designer.cs">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmAddUser.resx">
+      <DependentUpon>FrmAddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBudgets.resx">
+      <DependentUpon>FrmBudgets.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDeleteUser.resx">
+      <DependentUpon>FrmDeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateBudget.resx">
+      <DependentUpon>FrmUpdateBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdatePassword.resx">
+      <DependentUpon>FrmUpdatePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUpdateUser.resx">
+      <DependentUpon>FrmUpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmUsers.resx">
+      <DependentUpon>FrmUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -110,6 +277,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\ProGestionGSB.BLL.UserManager.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -124,6 +292,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\ProGestionGSB.BLL\ProGestionGSB.BLL.csproj">
       <Project>{d6bc13d4-95e4-444d-b8cc-82aa5669c306}</Project>
       <Name>ProGestionGSB.BLL</Name>
@@ -134,4 +308,12 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Ce projet fait référence à des packages NuGet qui sont manquants sur cet ordinateur. Utilisez l'option de restauration des packages NuGet pour les télécharger. Pour plus d'informations, consultez http://go.microsoft.com/fwlink/?LinkID=322105. Le fichier manquant est : {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>

@@ -1,10 +1,5 @@
-﻿using ProGestionGSB.DAL;
-using System;
+using ProGestionGSB.DAL;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace ProGestionGSB.BLL
 {
@@ -25,7 +20,7 @@ namespace ProGestionGSB.BLL
         {
             return AssociationDAO.GetInstance().GetAssociations();
         }
-        public int AddAssociation(string name,string responsable, int mission_id, int country_id)
+        public int AddAssociation(string name, string responsable, int mission_id, int country_id)
         {
             Association a = new Association();
             a.name = name;
@@ -35,7 +30,7 @@ namespace ProGestionGSB.BLL
             return AssociationDAO.GetInstance().AddAssociations(a);
         }
 
-        public int UpdateAssociations(int id,string name, string responsable, int mission_id, int country_id)
+        public int UpdateAssociations(int id, string name, string responsable, int mission_id, int country_id)
         {
             Association a = new Association();
             a.id = id;
@@ -49,6 +44,11 @@ namespace ProGestionGSB.BLL
         {
 
             return AssociationDAO.GetInstance().DeleteAssociations(a);
+        }
+
+        public List<string> ActionsByAssociation(Association a)
+        {
+            return AssociationDAO.GetInstance().GetActionsByAssociation(a);
         }
 
     }

@@ -16,7 +16,6 @@ namespace ProGestionGSB.DAL
     {
         public int id { get; set; }
         public System.DateTime date { get; set; }
-        public Nullable<double> plafond { get; set; }
         public Nullable<double> forecastBudget { get; set; }
         public Nullable<double> realBudget { get; set; }
         public int action_id { get; set; }

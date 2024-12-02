@@ -82,6 +82,15 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_actions_update", idParameter, libelParameter);
         }
     
+        public virtual ObjectResult<string> sp_ActionsByAssociation(Nullable<int> idAssociation)
+        {
+            var idAssociationParameter = idAssociation.HasValue ?
+                new ObjectParameter("idAssociation", idAssociation) :
+                new ObjectParameter("idAssociation", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_ActionsByAssociation", idAssociationParameter);
+        }
+    
         public virtual int sp_associations_add(string name, string responsable, Nullable<int> mission_id, Nullable<int> country_id)
         {
             var nameParameter = name != null ?
@@ -151,7 +160,7 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_associations_update", idParameter, nameParameter, responsableParameter, mission_idParameter, country_idParameter);
         }
     
-        public virtual int sp_choosenCountryYears_add(Nullable<int> country_id, Nullable<int> choosenYear)
+        public virtual int sp_choosenCountryYears_add(Nullable<int> country_id, Nullable<int> choosenYear, Nullable<double> plafond)
         {
             var country_idParameter = country_id.HasValue ?
                 new ObjectParameter("country_id", country_id) :
@@ -161,7 +170,11 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("choosenYear", choosenYear) :
                 new ObjectParameter("choosenYear", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_add", country_idParameter, choosenYearParameter);
+            var plafondParameter = plafond.HasValue ?
+                new ObjectParameter("plafond", plafond) :
+                new ObjectParameter("plafond", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_add", country_idParameter, choosenYearParameter, plafondParameter);
         }
     
         public virtual int sp_choosenCountryYears_delete(Nullable<int> country_id, Nullable<int> choosenYear)
@@ -191,11 +204,15 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_choosenCountryYears_getByYear_Result>("sp_choosenCountryYears_getByYear", choosenYearParameter);
         }
     
-        public virtual int sp_choosenCountryYears_update(Nullable<int> country_id, Nullable<int> oldChoosenYear, Nullable<int> newChoosenYear)
+        public virtual int sp_choosenCountryYears_update(Nullable<int> oldcountry_id, Nullable<int> newcountry_id, Nullable<int> oldChoosenYear, Nullable<int> newChoosenYear, Nullable<double> plafond)
         {
-            var country_idParameter = country_id.HasValue ?
-                new ObjectParameter("country_id", country_id) :
-                new ObjectParameter("country_id", typeof(int));
+            var oldcountry_idParameter = oldcountry_id.HasValue ?
+                new ObjectParameter("oldcountry_id", oldcountry_id) :
+                new ObjectParameter("oldcountry_id", typeof(int));
+    
+            var newcountry_idParameter = newcountry_id.HasValue ?
+                new ObjectParameter("newcountry_id", newcountry_id) :
+                new ObjectParameter("newcountry_id", typeof(int));
     
             var oldChoosenYearParameter = oldChoosenYear.HasValue ?
                 new ObjectParameter("oldChoosenYear", oldChoosenYear) :
@@ -205,7 +222,11 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("newChoosenYear", newChoosenYear) :
                 new ObjectParameter("newChoosenYear", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_update", country_idParameter, oldChoosenYearParameter, newChoosenYearParameter);
+            var plafondParameter = plafond.HasValue ?
+                new ObjectParameter("plafond", plafond) :
+                new ObjectParameter("plafond", typeof(double));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_choosenCountryYears_update", oldcountry_idParameter, newcountry_idParameter, oldChoosenYearParameter, newChoosenYearParameter, plafondParameter);
         }
     
         public virtual int sp_country_add(string name, string isoCode)
@@ -586,16 +607,25 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getAll_Result>("sp_users_getAll");
         }
     
-        public virtual ObjectResult<sp_users_getbyId_Result> sp_users_getbyId(Nullable<int> id)
+        public virtual ObjectResult<sp_users_getById_Result> sp_users_getById(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getbyId_Result>("sp_users_getbyId", idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getById_Result>("sp_users_getById", idParameter);
         }
     
-        public virtual int sp_users_update(Nullable<int> id, string login, string password, Nullable<int> role_id)
+        public virtual ObjectResult<sp_users_getByLogin_Result> sp_users_getByLogin(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin_Result>("sp_users_getByLogin", loginParameter);
+        }
+    
+        public virtual int sp_users_update(Nullable<int> id, string login, Nullable<int> role_id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -605,15 +635,33 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("login", login) :
                 new ObjectParameter("login", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
-    
             var role_idParameter = role_id.HasValue ?
                 new ObjectParameter("role_id", role_id) :
                 new ObjectParameter("role_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_update", idParameter, loginParameter, passwordParameter, role_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_update", idParameter, loginParameter, role_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_users_getByLogin1_Result> sp_users_getByLogin1(string login)
+        {
+            var loginParameter = login != null ?
+                new ObjectParameter("login", login) :
+                new ObjectParameter("login", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin1_Result>("sp_users_getByLogin1", loginParameter);
+        }
+    
+        public virtual int sp_users_resetPassword(Nullable<int> id, string password)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_resetPassword", idParameter, passwordParameter);
         }
     }
 }

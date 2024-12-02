@@ -11,7 +11,7 @@ namespace ProGestionGSB.DAL
 {
     using System;
     
-    public partial class sp_users_getbyId_Result
+    public partial class sp_users_getById_Result
     {
         public int id { get; set; }
         public string login { get; set; }

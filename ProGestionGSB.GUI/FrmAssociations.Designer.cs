@@ -39,10 +39,15 @@
             // 
             // dgvAssociations
             // 
+            this.dgvAssociations.AllowUserToAddRows = false;
+            this.dgvAssociations.AllowUserToDeleteRows = false;
+            this.dgvAssociations.AllowUserToResizeColumns = false;
+            this.dgvAssociations.AllowUserToResizeRows = false;
             this.dgvAssociations.BackgroundColor = System.Drawing.Color.White;
             this.dgvAssociations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAssociations.Location = new System.Drawing.Point(44, 115);
             this.dgvAssociations.Name = "dgvAssociations";
+            this.dgvAssociations.ReadOnly = true;
             this.dgvAssociations.Size = new System.Drawing.Size(529, 246);
             this.dgvAssociations.TabIndex = 0;
             // 
@@ -104,7 +109,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnClose);

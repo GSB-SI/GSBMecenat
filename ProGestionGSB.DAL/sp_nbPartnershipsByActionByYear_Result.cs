@@ -15,6 +15,6 @@ namespace ProGestionGSB.DAL
     {
         public string libel { get; set; }
         public int year { get; set; }
-        public Nullable<int> Column1 { get; set; }
+        public Nullable<int> nbPartnerships { get; set; }
     }
 }

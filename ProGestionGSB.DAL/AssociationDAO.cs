@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,5 +84,17 @@ namespace ProGestionGSB.DAL
                 ;
             }
         }
+
+        public List<string> GetActionsByAssociation(Association a)
+        {
+            using (var ctx = new GSBMecenatEntities())
+            {
+                var liste = ctx.sp_ActionsByAssociation(a.id)
+                    .ToList();
+                return liste;
+                
+            }
+        }
+
     }
 }

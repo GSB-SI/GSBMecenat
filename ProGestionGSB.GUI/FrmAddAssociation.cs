@@ -69,7 +69,6 @@ namespace ProGestionGSB.GUI
             }
             else
             {
-                // Enregistrement du produit dans la BDD
                 string name = txtName.Text;
                 string responsable = txtResponsable.Text;
                 int mission_id = Convert.ToInt32(cboMission.SelectedValue.ToString());

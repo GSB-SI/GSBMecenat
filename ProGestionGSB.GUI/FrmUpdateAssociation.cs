@@ -63,7 +63,11 @@ namespace ProGestionGSB.GUI
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             #region Contrôle des données saisies
-            string erreurs = "";
+            string erreurs = ""; 
+            if (cboAssociation.SelectedIndex == -1)
+            {
+                erreurs += "Veuillez sélectionner une association pour modifier\n";
+            }
             if (string.IsNullOrWhiteSpace(txtName.Text) == true)
             {
                 erreurs += "Le nom de l'association doit être renseigné\n";
@@ -74,7 +78,6 @@ namespace ProGestionGSB.GUI
                 erreurs += "Le nom du responsable doit être renseigné\n";
                 txtResponsable.Focus();
             }
-            
             if (cboMission.SelectedIndex == -1)
             {
                 erreurs += "La mission de l'association doit être renseignée\n";
@@ -90,7 +93,6 @@ namespace ProGestionGSB.GUI
             }
             else
             {
-                // Enregistrement du produit dans la BDD
                 int id = Convert.ToInt32(cboAssociation.SelectedValue.ToString());
                 string name = txtName.Text;
                 string responsable = txtResponsable.Text;
@@ -98,7 +100,7 @@ namespace ProGestionGSB.GUI
                 int country_id = Convert.ToInt32(cboCountry.SelectedValue.ToString());
 
                 AssociationManager.GetInstance().UpdateAssociations(id,name,responsable,mission_id,country_id);
-                MessageBox.Show("Produit modifié", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Association modifiée", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 fillAssociation();
             }
         }

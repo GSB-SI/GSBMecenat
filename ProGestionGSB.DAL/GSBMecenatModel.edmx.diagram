@@ -4,23 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e0153e4176124d748a6708a544b254ce" Name="Diagram1" ZoomLevel="69">
-        <EntityTypeShape EntityType="ProGestionModel.Action" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.Association" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.ChoosenCountryYear" Width="1.5" PointX="3.5" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.Country" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.InterventionsLog" Width="1.5" PointX="7.375" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.Mission" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.Partnership" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.Role" Width="1.5" PointX="7.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ProGestionModel.User" Width="1.5" PointX="7.375" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="ProGestionModel.FK__Partnersh__actio__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__Associati__count__412EB0B6" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__Associati__missi__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__Partnersh__assoc__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__ChoosenCo__count__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__Partnersh__count__45F365D3" ManuallyRouted="false" />
-        <AssociationConnector Association="ProGestionModel.FK__Users__role_id__29221CFB" ManuallyRouted="false" />
+      <Diagram DiagramId="f994d4ed28964a6e9129ceaec71274ab" Name="Diagram1">
+        <EntityTypeShape EntityType="GSBMecenatModel.Action" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.Association" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.ChoosenCountryYear" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.Country" Width="1.5" PointX="0.75" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.InterventionsLog" Width="1.5" PointX="7.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.Mission" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.Partnership" Width="1.5" PointX="5.25" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.Role" Width="1.5" PointX="5.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="GSBMecenatModel.User" Width="1.5" PointX="8" PointY="7.625" IsExpanded="true" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Partnersh__actio__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Associati__count__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Associati__missi__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Partnersh__assoc__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__ChoosenCo__count__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Partnersh__count__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="GSBMecenatModel.FK__Users__role_id__29221CFB" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

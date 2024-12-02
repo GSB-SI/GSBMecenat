@@ -33,10 +33,9 @@ namespace ProGestionGSB.BLL
             UserDAO.GetInstance().AddUser(login, password_hash, role_id);
         }
 
-        public void UpdateUser(int id, string login, string password, int role_id)
+        public void UpdateUser(int id, string login, int role_id)
         {
-            string password_hash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
-            UserDAO.GetInstance().UpdateUser(id, login, password_hash, role_id);
+            UserDAO.GetInstance().UpdateUser(id, login, role_id);
         }
 
         public void DeleteUser(int id)
@@ -52,6 +51,13 @@ namespace ProGestionGSB.BLL
                 user = null;
             }
             return user;
+        }
+        public void resetPassword(int id, string password)
+        {
+
+            string password_hash = BCrypt.Net.BCrypt.EnhancedHashPassword(password, 13);
+            UserDAO.GetInstance().resetPassword(id, password_hash);
+
         }
     }
 }

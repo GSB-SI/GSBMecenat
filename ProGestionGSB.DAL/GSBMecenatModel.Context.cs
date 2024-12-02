@@ -625,7 +625,7 @@ namespace ProGestionGSB.DAL
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin_Result>("sp_users_getByLogin", loginParameter);
         }
     
-        public virtual int sp_users_update(Nullable<int> id, string login, string password, Nullable<int> role_id)
+        public virtual int sp_users_update(Nullable<int> id, string login, Nullable<int> role_id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -635,15 +635,11 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("login", login) :
                 new ObjectParameter("login", typeof(string));
     
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
-    
             var role_idParameter = role_id.HasValue ?
                 new ObjectParameter("role_id", role_id) :
                 new ObjectParameter("role_id", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_update", idParameter, loginParameter, passwordParameter, role_idParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_update", idParameter, loginParameter, role_idParameter);
         }
     
         public virtual ObjectResult<sp_users_getByLogin1_Result> sp_users_getByLogin1(string login)
@@ -653,6 +649,19 @@ namespace ProGestionGSB.DAL
                 new ObjectParameter("login", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_users_getByLogin1_Result>("sp_users_getByLogin1", loginParameter);
+        }
+    
+        public virtual int sp_users_resetPassword(Nullable<int> id, string password)
+        {
+            var idParameter = id.HasValue ?
+                new ObjectParameter("id", id) :
+                new ObjectParameter("id", typeof(int));
+    
+            var passwordParameter = password != null ?
+                new ObjectParameter("password", password) :
+                new ObjectParameter("password", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_users_resetPassword", idParameter, passwordParameter);
         }
     }
 }

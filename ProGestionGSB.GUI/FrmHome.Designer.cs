@@ -37,6 +37,7 @@
             this.btnShowIndicators = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnChoosenCountryYears = new System.Windows.Forms.Button();
+            this.btnResetpassword = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -52,7 +53,7 @@
             // btnManageUsers
             // 
             this.btnManageUsers.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageUsers.Location = new System.Drawing.Point(67, 125);
+            this.btnManageUsers.Location = new System.Drawing.Point(65, 84);
             this.btnManageUsers.Name = "btnManageUsers";
             this.btnManageUsers.Size = new System.Drawing.Size(160, 85);
             this.btnManageUsers.TabIndex = 1;
@@ -63,7 +64,7 @@
             // btnManageAssociations
             // 
             this.btnManageAssociations.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManageAssociations.Location = new System.Drawing.Point(355, 126);
+            this.btnManageAssociations.Location = new System.Drawing.Point(353, 85);
             this.btnManageAssociations.Name = "btnManageAssociations";
             this.btnManageAssociations.Size = new System.Drawing.Size(160, 85);
             this.btnManageAssociations.TabIndex = 2;
@@ -74,7 +75,7 @@
             // btnManagePartnerships
             // 
             this.btnManagePartnerships.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagePartnerships.Location = new System.Drawing.Point(67, 250);
+            this.btnManagePartnerships.Location = new System.Drawing.Point(65, 190);
             this.btnManagePartnerships.Name = "btnManagePartnerships";
             this.btnManagePartnerships.Size = new System.Drawing.Size(160, 85);
             this.btnManagePartnerships.TabIndex = 3;
@@ -85,7 +86,7 @@
             // btnManagePlafonds
             // 
             this.btnManagePlafonds.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnManagePlafonds.Location = new System.Drawing.Point(355, 250);
+            this.btnManagePlafonds.Location = new System.Drawing.Point(353, 190);
             this.btnManagePlafonds.Name = "btnManagePlafonds";
             this.btnManagePlafonds.Size = new System.Drawing.Size(160, 85);
             this.btnManagePlafonds.TabIndex = 4;
@@ -96,7 +97,7 @@
             // btnShowActionsByAssociation
             // 
             this.btnShowActionsByAssociation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowActionsByAssociation.Location = new System.Drawing.Point(67, 375);
+            this.btnShowActionsByAssociation.Location = new System.Drawing.Point(65, 302);
             this.btnShowActionsByAssociation.Name = "btnShowActionsByAssociation";
             this.btnShowActionsByAssociation.Size = new System.Drawing.Size(160, 85);
             this.btnShowActionsByAssociation.TabIndex = 5;
@@ -107,7 +108,7 @@
             // btnShowIndicators
             // 
             this.btnShowIndicators.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnShowIndicators.Location = new System.Drawing.Point(355, 503);
+            this.btnShowIndicators.Location = new System.Drawing.Point(353, 420);
             this.btnShowIndicators.Name = "btnShowIndicators";
             this.btnShowIndicators.Size = new System.Drawing.Size(160, 85);
             this.btnShowIndicators.TabIndex = 6;
@@ -118,9 +119,9 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(67, 503);
+            this.btnExit.Location = new System.Drawing.Point(202, 525);
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(160, 85);
+            this.btnExit.Size = new System.Drawing.Size(160, 57);
             this.btnExit.TabIndex = 7;
             this.btnExit.Text = "Quitter";
             this.btnExit.UseVisualStyleBackColor = true;
@@ -129,7 +130,7 @@
             // btnChoosenCountryYears
             // 
             this.btnChoosenCountryYears.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnChoosenCountryYears.Location = new System.Drawing.Point(355, 375);
+            this.btnChoosenCountryYears.Location = new System.Drawing.Point(353, 302);
             this.btnChoosenCountryYears.Name = "btnChoosenCountryYears";
             this.btnChoosenCountryYears.Size = new System.Drawing.Size(160, 85);
             this.btnChoosenCountryYears.TabIndex = 8;
@@ -137,11 +138,23 @@
             this.btnChoosenCountryYears.UseVisualStyleBackColor = true;
             this.btnChoosenCountryYears.Click += new System.EventHandler(this.btnChoosenCountryYears_Click);
             // 
+            // btnResetpassword
+            // 
+            this.btnResetpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetpassword.Location = new System.Drawing.Point(65, 420);
+            this.btnResetpassword.Name = "btnResetpassword";
+            this.btnResetpassword.Size = new System.Drawing.Size(160, 85);
+            this.btnResetpassword.TabIndex = 9;
+            this.btnResetpassword.Text = "Modifier mon mot de passe";
+            this.btnResetpassword.UseVisualStyleBackColor = true;
+            this.btnResetpassword.Click += new System.EventHandler(this.btnResetpassword_Click);
+            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(582, 617);
+            this.Controls.Add(this.btnResetpassword);
             this.Controls.Add(this.btnChoosenCountryYears);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnShowIndicators);
@@ -170,6 +183,7 @@
         private System.Windows.Forms.Button btnShowIndicators;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnChoosenCountryYears;
+        private System.Windows.Forms.Button btnResetpassword;
     }
 }
 

@@ -105,6 +105,7 @@
       <DependentUpon>GSBMecenatModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RoleDAO.cs" />
+    <Compile Include="UserExt.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="sp_actions_getAll_Result.cs">

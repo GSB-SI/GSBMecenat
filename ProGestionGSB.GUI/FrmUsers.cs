@@ -14,7 +14,12 @@ namespace ProGestionGSB.GUI
 
             dgvUsers.DataSource = UserManager.GetInstance().GetUsers();
             dgvUsers.Columns["Role"].Visible = false;
+            dgvUsers.Columns["password"].Visible = false;
+            dgvUsers.Columns["id"].Visible = false;
+            dgvUsers.Columns["role_id"].Visible = false;
+            dgvUsers.Columns["login"].DisplayIndex = 0;
 
+            dgvUsers.Columns["RoleLibel"].HeaderText = "Role";
             dgvUsers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvUsers.Columns["Login"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 

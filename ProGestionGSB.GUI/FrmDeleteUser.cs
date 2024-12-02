@@ -51,16 +51,19 @@ namespace ProGestionGSB.GUI
                 cboUsers.SelectedIndex = -1;
 
                 cboUsers.DataSource = UserManager.GetInstance().GetUsers();
+                cboUsers.SelectedIndex = -1;
             }
         }
 
-        private void cboUsers_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboUsers_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            User user = (User)cboUsers.SelectedItem;
-
-            txtLogin.Text = user.login;
-            txtPassword.Text = user.password;
-            cboRoles.SelectedValue = user.role_id;
+            if (cboUsers.SelectedIndex != -1)
+            {
+                User user = (User)cboUsers.SelectedItem;
+                txtLogin.Text = user.login;
+                txtPassword.Text = user.password;
+                cboRoles.SelectedValue = user.role_id;
+            }
         }
     }
 }

@@ -64,6 +64,7 @@ namespace ProGestionGSB.GUI
             btnManageUsers.Enabled = false;
             btnManagePlafonds.Enabled = false;
             btnChoosenCountryYears.Enabled = false;
+            btnResetpassword.Enabled = false;
         }
 
         private void FrmHome_Shown(object sender, EventArgs e)
@@ -91,11 +92,18 @@ namespace ProGestionGSB.GUI
             btnShowIndicators.Enabled = true;
             btnManagePlafonds.Enabled = true;
             btnChoosenCountryYears.Enabled = true;
+            btnResetpassword.Enabled = true;
         }
 
         private void btnChoosenCountryYears_Click(object sender, EventArgs e)
         {
             FrmChoosenCountryYears target = new FrmChoosenCountryYears(utilisateurAuthentifie);
+            target.ShowDialog();
+        }
+
+        private void btnResetpassword_Click(object sender, EventArgs e)
+        {
+            FrmUpdatePassword target = new FrmUpdatePassword(utilisateurAuthentifie);
             target.ShowDialog();
         }
     }
